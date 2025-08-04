@@ -728,16 +728,6 @@
             "rid": "browser"
           }
         }
-      },
-      "Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Application.dll": {}
-        }
       }
     }
   },
@@ -1706,16 +1696,10 @@
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Application/1.0.0": {
-      "type": "project",
-      "path": "../Application/Application.csproj",
-      "msbuildProject": "../Application/Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Application >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.3.1",
       "Microsoft.Extensions.Identity.Stores >= 9.0.7"
     ]
@@ -1744,11 +1728,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj": {
-              "projectPath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

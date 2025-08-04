@@ -25,7 +25,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Domain/Domain.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Domain/Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -43,6 +47,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[13.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -84,11 +94,7 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {
-              "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj": {
-                "projectPath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -158,6 +164,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj": {
+                "projectPath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj"
+              },
               "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Domain/Domain.csproj": {
                 "projectPath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Domain/Domain.csproj"
               }
@@ -189,6 +198,22 @@
               "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.7, )"
             }

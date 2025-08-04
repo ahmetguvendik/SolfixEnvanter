@@ -8,5 +8,8 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
 {
     public SolfixEnvanterDbContext(DbContextOptions<SolfixEnvanterDbContext> options) : base(options) { }
 
-    
+    public DbSet<Asset> Assets { get; set; }
+    public DbSet<AssetType> AssetTypes { get; set; }
+    public DbSet<Department> Departments { get; set; }
+    public DbSet<Location> Locations { get; set; }  
 }
