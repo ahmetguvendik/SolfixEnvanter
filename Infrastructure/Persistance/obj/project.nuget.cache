@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5l5Ok+pc1HQ=",
+  "dgSpecHash": "Dm9IpC+B29E=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Infrastructure/Persistance/Persistance.csproj",
   "expectedPackageFiles": [
@@ -46,7 +46,9 @@
     "/Users/ahmetguvendik/.nuget/packages/microsoft.entityframeworkcore.tools/9.0.7/microsoft.entityframeworkcore.tools.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.7/microsoft.extensions.caching.abstractions.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.caching.memory/9.0.7/microsoft.extensions.caching.memory.9.0.7.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration/9.0.7/microsoft.extensions.configuration.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.7/microsoft.extensions.configuration.abstractions.9.0.7.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.configuration.binder/9.0.7/microsoft.extensions.configuration.binder.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.7/microsoft.extensions.dependencyinjection.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.7/microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.extensions.dependencymodel/9.0.7/microsoft.extensions.dependencymodel.9.0.7.nupkg.sha512",

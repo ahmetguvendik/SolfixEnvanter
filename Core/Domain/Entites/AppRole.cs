@@ -4,5 +4,5 @@ namespace Domain.Entites;
 
 public class AppRole : IdentityRole<string> 
 {
-    
+  
 }

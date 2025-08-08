@@ -7,10 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="Features\Handlers\AppUsers\Read\" />
       <Folder Include="Features\Handlers\Assets\Read\" />
       <Folder Include="Features\Handlers\Locations\Read\" />
       <Folder Include="Features\Queries\" />
-      <Folder Include="Features\Results\" />
     </ItemGroup>
 
     <ItemGroup>

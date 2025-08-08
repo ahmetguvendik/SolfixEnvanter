@@ -180,3 +180,6 @@
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/MediatR.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/MediatR.Contracts.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.Extensions.Configuration.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Binder.dll
