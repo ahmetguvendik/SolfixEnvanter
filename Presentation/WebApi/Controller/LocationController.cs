@@ -1,4 +1,5 @@
 using Application.Features.Commands;
+using Application.Features.Queries.LocationQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,13 @@ public class LocationController  : ControllerBase
     public LocationController(IMediator mediator)
     {
          _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetLocation()
+    {
+        var locations = await _mediator.Send(new GetAllLocationQuery());
+        return Ok(locations);
     }
     
     [HttpPost]

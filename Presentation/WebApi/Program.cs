@@ -40,6 +40,18 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials() // SignalR için MUTLAKA OLMALI
+                .SetIsOriginAllowed(origin => true); // Development için '*' gibi düşünebilirsiniz, ancak güvenlik için spesifik origin belirtmek daha iyidir.
+        });
+});
+
 
 var app = builder.Build();
 
@@ -49,6 +61,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("AllowAll");
 
 
 app.UseHttpsRedirection();
