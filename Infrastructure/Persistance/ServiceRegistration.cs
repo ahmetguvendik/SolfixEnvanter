@@ -26,6 +26,9 @@ public static class ServiceRegistration
             .AddDefaultTokenProviders();
     
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));    
+        collection.AddScoped(typeof(IUserRepository), typeof(UserRepository));    
+        collection.AddScoped(typeof(IAssetRepository), typeof(AssetRepository));    
+
         collection.AddScoped<ITokenHandler, TokenHandler>();
 
         var jwtSection = configuration.GetSection("Jwt");

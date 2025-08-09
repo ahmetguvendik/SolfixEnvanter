@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Handlers\Assets\Read\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="MediatR" Version="13.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     </ItemGroup>

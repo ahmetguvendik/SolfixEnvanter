@@ -65,4 +65,11 @@ public class UserController : ControllerBase
         var users = await _mediator.Send(new GetUserQuery());
         return Ok(users);
     }
+    
+    [HttpGet("GetUserById")]
+    public async Task<IActionResult> GetUserById(string id)
+    {
+        var users = await _mediator.Send(new GetUserByIdQuery(id));
+        return Ok(users);
+    }
 }

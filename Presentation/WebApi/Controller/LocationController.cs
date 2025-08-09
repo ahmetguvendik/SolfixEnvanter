@@ -28,5 +28,5 @@ public class LocationController  : ControllerBase
     {
         await _mediator.Send(command);
         return Ok("Eklendi");   
-    }
+    }   
 }
