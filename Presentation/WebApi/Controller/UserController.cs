@@ -1,4 +1,5 @@
 using Application.Features.Commands.AppUser;
+using Application.Features.Queries.AppUserQueries;
 using Application.Features.Results;
 using Application.Services;
 using Domain.Entites;
@@ -10,14 +11,14 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserCommand : ControllerBase
+public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ITokenHandler _tokenHandler;
     private readonly UserManager<AppUser> _userManager;
 
 
-    public UserCommand(IMediator mediator, ITokenHandler tokenHandler, UserManager<AppUser> userManager)
+    public UserController(IMediator mediator, ITokenHandler tokenHandler, UserManager<AppUser> userManager)
     {
           _mediator = mediator;
           _tokenHandler = tokenHandler;
@@ -56,5 +57,12 @@ public class UserCommand : ControllerBase
             token = token.AccessToken,
             expiration = token.Expiration
         });
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetUsers()
+    {
+        var users = await _mediator.Send(new GetUserQuery());
+        return Ok(users);
     }
 }
