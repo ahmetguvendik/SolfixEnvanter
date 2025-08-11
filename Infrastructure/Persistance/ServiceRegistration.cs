@@ -28,7 +28,9 @@ public static class ServiceRegistration
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));    
         collection.AddScoped(typeof(IUserRepository), typeof(UserRepository));    
         collection.AddScoped(typeof(IAssetRepository), typeof(AssetRepository));    
+        collection.AddScoped(typeof(IInternetLinesRepository), typeof(InternetLinesRepository));    
 
+        
         collection.AddScoped<ITokenHandler, TokenHandler>();
 
         var jwtSection = configuration.GetSection("Jwt");

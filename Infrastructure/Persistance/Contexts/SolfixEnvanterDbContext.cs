@@ -11,5 +11,6 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
     public DbSet<Asset> Assets { get; set; }
     public DbSet<AssetType> AssetTypes { get; set; }
     public DbSet<Department> Departments { get; set; }
-    public DbSet<Location> Locations { get; set; }  
+    public DbSet<Location> Locations { get; set; }
+    public DbSet<InternetLine> InternetLines { get; set; }
 }

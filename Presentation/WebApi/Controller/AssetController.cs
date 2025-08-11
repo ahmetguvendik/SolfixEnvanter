@@ -93,4 +93,18 @@ public class AssetController : ControllerBase
         var values = await _mediator.Send(new GetAllModemQuery());
         return Ok(values);
     }
+    
+    [HttpGet("GetAllWindowsKey")]
+    public async Task<IActionResult> GetAllWindowsKey()
+    {
+        var values = await _mediator.Send(new GetAllWindowsKeyQuery());
+        return Ok(values);
+    }
+    
+    [HttpGet("GetAllSystemSoftware")]
+    public async Task<IActionResult> GetAllSystemSoftware()
+    {
+        var values = await _mediator.Send(new GetAllSystemSoftwareQuery());
+        return Ok(values);
+    }
 }
