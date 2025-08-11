@@ -13,4 +13,6 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
     public DbSet<Department> Departments { get; set; }
     public DbSet<Location> Locations { get; set; }
     public DbSet<InternetLine> InternetLines { get; set; }
+    public DbSet<SslCertificate> SslCertificates { get; set; }
+    public DbSet<DomainName> DomainNames { get; set; }
 }
