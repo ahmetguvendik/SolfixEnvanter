@@ -58,4 +58,39 @@ public class AssetController : ControllerBase
         var values = await _mediator.Send(new GetAllKeyboardQuery());
         return Ok(values);
     }
+    
+    [HttpGet("GetAllKSwitch")]
+    public async Task<IActionResult> GetAllKSwitch()
+    {
+        var values = await _mediator.Send(new GetAllSwitchQuery());
+        return Ok(values);
+    }
+    
+    [HttpGet("GetAllRouter")]
+    public async Task<IActionResult> GetAllRouter()
+    {
+        var values = await _mediator.Send(new GetAllRouterQuery());
+        return Ok(values);
+    }
+    
+    [HttpGet("GetAllAp")]
+    public async Task<IActionResult> GetAllAp()
+    {
+        var values = await _mediator.Send(new GetAllApQuery());
+        return Ok(values);
+    }
+    
+    [HttpGet("GetAllFirewall")]
+    public async Task<IActionResult> GetAllFirewall()
+    {
+        var values = await _mediator.Send(new GetAllFirewallQuery());
+        return Ok(values);
+    }
+    
+    [HttpGet("GetAllModem")]
+    public async Task<IActionResult> GetAllModem()
+    {
+        var values = await _mediator.Send(new GetAllModemQuery());
+        return Ok(values);
+    }
 }
