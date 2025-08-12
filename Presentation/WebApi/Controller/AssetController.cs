@@ -114,4 +114,12 @@ public class AssetController : ControllerBase
         var values = await _mediator.Send(new GetAllTVQuery());
         return Ok(values);
     }
+    
+    [HttpGet("GetAllAssignedAssetUser")]
+    public async Task<IActionResult> GetAllAssignedAssetUser()
+    {
+        var values = await _mediator.Send(new GetAllAssignedAssetUserQuery());
+        return Ok(values);
+    }
+    
 }

@@ -23,6 +23,7 @@ public class GetUserByIdQueryHandler  : IRequestHandler<GetUserByIdQuery, GetUse
             Id = user.Id,
             FullName = user.FullName,
             DepartmentName = user.Department.Name,
+            Email = user.Email
         };
     }
 }

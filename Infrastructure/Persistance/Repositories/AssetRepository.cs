@@ -27,4 +27,15 @@ public class AssetRepository  : IAssetRepository
             .Where(a => a.AssetTypeId == assetTypeId)
             .ToListAsync();
     }
+
+    public async Task<List<Asset>> GetAllAssignedUser()
+    {
+        return await _dbContext.Assets
+            .Include(a => a.Location)
+            .Include(a => a.Department)
+            .Include(a => a.AssignedToUser)
+            .Include(a => a.AssetType)
+            .Where(a => a.AssignedToUserId != null)
+            .ToListAsync();
+    }
 }
