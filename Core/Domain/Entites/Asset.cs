@@ -33,7 +33,10 @@ public class Asset : BaseEntity
         public string? Description { get; set; }
 
         public string DepartmentId { get; set; }
-        public Department Department { get; set; }      
+        public Department Department { get; set; }
+
+        public Cabinet? Cabinet { get; set; }
+        public string? CabinetId { get; set; }  
 
 
 }

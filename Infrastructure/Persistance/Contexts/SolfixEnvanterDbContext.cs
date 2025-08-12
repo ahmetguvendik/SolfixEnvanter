@@ -15,4 +15,5 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
     public DbSet<InternetLine> InternetLines { get; set; }
     public DbSet<SslCertificate> SslCertificates { get; set; }
     public DbSet<DomainName> DomainNames { get; set; }
+    public DbSet<Cabinet> Cabinets { get; set; }        
 }

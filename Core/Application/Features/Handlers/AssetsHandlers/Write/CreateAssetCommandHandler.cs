@@ -31,6 +31,7 @@ public class CreateAssetCommandHandler : IRequestHandler<CreateAssetCommand>
         asset.SerialNumber = request.SerialNumber;
         asset.Status = request.Status;
         asset.DepartmentId = request.DepartmentId;
+        asset.CabinetId = request.CabinetId;
         await _repository.CreateAsync(asset);
         await _repository.SaveChangesAsync();   
     }

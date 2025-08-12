@@ -18,4 +18,5 @@ public class CreateAssetCommand : IRequest
     public AssetStatus Status { get; set; } 
     public string? Description { get; set; }
     public string DepartmentId { get; set; }
+    public string? CabinetId { get; set; }  
 }
