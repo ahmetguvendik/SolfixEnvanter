@@ -1,0 +1,27 @@
+using Application.Features.Queries.AppRoleQueries;
+using Application.Features.Results.AppRoleResults;
+using Domain.Entites;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace Application.Features.Handlers.AppRoleHandlers.Read;
+
+public class GetAllRoleQueryHandler  : IRequestHandler<GetAllRoleQuery, List<GetAllRoleQueryResult>>
+{
+    private readonly RoleManager<AppRole>  _roleManager;
+
+    public GetAllRoleQueryHandler(RoleManager<AppRole> roleManager)
+    {
+        _roleManager =  roleManager;
+    }
+    public async Task<List<GetAllRoleQueryResult>> Handle(GetAllRoleQuery request, CancellationToken cancellationToken)
+    {
+        var roles = await _roleManager.Roles.ToListAsync();
+        return roles.Select(x => new GetAllRoleQueryResult()
+        {
+            Id = x.Id,
+            Name = x.Name,
+        }).ToList();
+    }
+}

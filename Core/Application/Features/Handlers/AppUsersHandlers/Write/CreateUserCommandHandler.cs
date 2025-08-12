@@ -27,13 +27,18 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
         var response = await _userManager.CreateAsync(appUser, request.Password);
         if (response.Succeeded)
         {
+            var role = await _roleManager.FindByNameAsync(request.Role);
+            if (role == null)
+            {
                 var appRole = new AppRole()
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Admin",
+                    Name = "Staff",
                 };
                 await _roleManager.CreateAsync(appRole);
-                await _userManager.AddToRoleAsync(appUser, "Admin");    
+                await _userManager.AddToRoleAsync(appUser, "Staff");    
+            }
+
+            await _userManager.AddToRoleAsync(appUser, request.Role);    
                 
         }
         else
