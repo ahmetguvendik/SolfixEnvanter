@@ -37,6 +37,9 @@ public class Asset : BaseEntity
 
         public Cabinet? Cabinet { get; set; }
         public string? CabinetId { get; set; }  
+        
+        public ICollection<AssetNetworkInfo> AssetNetworkInfos { get; set; }
+
 
 
 }

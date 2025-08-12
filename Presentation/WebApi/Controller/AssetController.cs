@@ -122,4 +122,11 @@ public class AssetController : ControllerBase
         return Ok(values);
     }
     
+    [HttpGet("GetAllAssets")]
+    public async Task<IActionResult> GetAllAssets()
+    {
+        var values = await _mediator.Send(new GetAllAssetsQuery());
+        return Ok(values);
+    }
+    
 }
