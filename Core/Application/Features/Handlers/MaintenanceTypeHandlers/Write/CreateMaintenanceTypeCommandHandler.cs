@@ -18,9 +18,7 @@ public class CreateMaintenanceTypeCommandHandler : IRequestHandler<CreateMainten
         var maintance = new MaintenanceType();
         maintance.Id = Guid.NewGuid().ToString();
         maintance.Name = request.Name;
-        maintance.Description = request.Description;
         maintance.StartDate = request.StartDate;
-        maintance.LastPerformedDate = request.LastPerformedDate;
         maintance.Period  = request.Period;
         await _repository.CreateAsync(maintance);
         await _repository.SaveChangesAsync();

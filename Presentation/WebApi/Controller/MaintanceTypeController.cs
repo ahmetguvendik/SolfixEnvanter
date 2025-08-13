@@ -1,4 +1,5 @@
 using Application.Features.Commands.MaintenanceTypeCommands;
+using Application.Features.Queries.MaintanceTypeQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,5 +21,12 @@ public class MaintanceTypeController : ControllerBase
     {
         await _mediator.Send(command);
         return Ok("Successfully created maintenance type");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var values = await _mediator.Send(new GetAllMaintanceTypeQuery());
+        return Ok(values);
     }
 }

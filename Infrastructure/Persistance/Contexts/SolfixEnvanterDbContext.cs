@@ -18,4 +18,5 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
     public DbSet<Cabinet> Cabinets { get; set; }
     public DbSet<AssetNetworkInfo> AssetNetworkInfos { get; set; }
     public DbSet<MaintenanceType> MaintenanceTypes { get; set; }    
+    public DbSet<MaintenanceRecord> MaintenanceRecords { get; set; }        
 }

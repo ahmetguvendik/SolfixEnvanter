@@ -25,6 +25,7 @@ public static class ServiceRegistration
             .AddEntityFrameworkStores<SolfixEnvanterDbContext>() 
             .AddDefaultTokenProviders();
     
+        //Interfaces
         collection.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));    
         collection.AddScoped(typeof(IUserRepository), typeof(UserRepository));    
         collection.AddScoped(typeof(IAssetRepository), typeof(AssetRepository));    
@@ -32,9 +33,11 @@ public static class ServiceRegistration
         collection.AddScoped(typeof(ISslCertificateRepository), typeof(SslCertificateRepository));    
         collection.AddScoped(typeof(ICabinetRepository), typeof(CabinetRepository));    
         collection.AddScoped(typeof(IAssetNetworkInfoRepository), typeof(AssetNetworkInfoRepository));    
-
+        collection.AddScoped(typeof(IMaintanceRecordRepository), typeof(MaintanceRecordRepository));    
 
         
+        //Services
+        collection.AddScoped(typeof(IMaintenanceService), typeof(MaintenanceService));    
         collection.AddScoped<ITokenHandler, TokenHandler>();
 
         var jwtSection = configuration.GetSection("Jwt");
