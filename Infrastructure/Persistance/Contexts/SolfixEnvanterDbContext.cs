@@ -16,5 +16,6 @@ public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string
     public DbSet<SslCertificate> SslCertificates { get; set; }
     public DbSet<DomainName> DomainNames { get; set; }
     public DbSet<Cabinet> Cabinets { get; set; }
-    public DbSet<AssetNetworkInfo> AssetNetworkInfos { get; set; }  
+    public DbSet<AssetNetworkInfo> AssetNetworkInfos { get; set; }
+    public DbSet<MaintenanceType> MaintenanceTypes { get; set; }    
 }
