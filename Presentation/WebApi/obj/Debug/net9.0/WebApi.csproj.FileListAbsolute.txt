@@ -183,3 +183,5 @@
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.Extensions.Configuration.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/FluentValidation.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll

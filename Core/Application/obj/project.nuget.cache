@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "nKn7FDRQN/g=",
+  "dgSpecHash": "UI4as35yB4g=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/Application.csproj",
   "expectedPackageFiles": [
+    "/Users/ahmetguvendik/.nuget/packages/fluentvalidation/11.9.0/fluentvalidation.11.9.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.9.0/fluentvalidation.dependencyinjectionextensions.11.9.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr/13.0.0/mediatr.13.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/microsoft.aspnetcore.authentication/2.3.0/microsoft.aspnetcore.authentication.2.3.0.nupkg.sha512",
