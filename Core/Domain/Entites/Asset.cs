@@ -1,6 +1,6 @@
 using Application.Enums;
 
-namespace Domain.Entites;
+namespace Domain.Entities;
 
 public class Asset : BaseEntity
 {

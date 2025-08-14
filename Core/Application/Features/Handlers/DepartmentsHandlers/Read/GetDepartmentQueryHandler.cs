@@ -1,7 +1,7 @@
 using Application.Features.Queries.DepartmentQueries;
 using Application.Features.Results.DepartmentResults;
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Handlers.Departments.Read;

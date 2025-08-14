@@ -1,19 +1,20 @@
-using Domain.Entites;
+using Domain.Entities;
 using Application.Interfaces;
 
-namespace Persistance.Services
+namespace Persistence.Services
 {
     public class MaintenanceService : IMaintenanceService
     {
         public List<DateTime> GetUpcomingDates(MaintenanceType maintenanceType, int numberOfOccurrences = 5)
         {
             var dates = new List<DateTime>();
-            var nextDate = maintenanceType.StartDate;
+
+            // Bugünden itibaren ilk planlı tarihi bul
+            var nextDate = GetNextScheduledDate(maintenanceType);
 
             for (int i = 0; i < numberOfOccurrences; i++)
             {
-                if (nextDate >= DateTime.Today)
-                    dates.Add(nextDate);
+                dates.Add(nextDate);
 
                 nextDate = maintenanceType.Period switch
                 {

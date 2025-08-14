@@ -1,9 +1,9 @@
-using Application.Features.Results.MaintanceTypeResults;
+using Application.Features.Results.MaintenanceTypeResults;
 using MediatR;
 
-namespace Application.Features.Queries.MaintanceTypeQueries;
+namespace Application.Features.Queries.MaintenanceTypeQueries;
 
-public class GetAllMaintanceTypeQuery : IRequest<List<GetAllMaintanceTypeQueryResult>>
+public class GetAllMaintenanceTypeQuery : IRequest<List<GetAllMaintenanceTypeQueryResult>>
 {
     
 }

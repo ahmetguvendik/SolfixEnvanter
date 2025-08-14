@@ -1,39 +1,65 @@
 using Application.Features.Commands.MaintenanceRecordCommands;
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Handlers.MaintenanceRecordHandlers.Write
 {
-    public class CompleteMaintenanceCommandHandler : IRequestHandler<CompleteMaintenanceCommand>
+    public class CompleteMaintenanceByTypeCommandHandler : IRequestHandler<CompleteMaintenanceCommand>
     {
-        private readonly IGenericRepository<MaintenanceRecord> _repository;
+        private readonly IGenericRepository<MaintenanceType> _typeRepo;
+        private readonly IGenericRepository<MaintenanceRecord> _recordRepo;
 
-        public CompleteMaintenanceCommandHandler(IGenericRepository<MaintenanceRecord> repository)
+        public CompleteMaintenanceByTypeCommandHandler(
+            IGenericRepository<MaintenanceType> typeRepo,
+            IGenericRepository<MaintenanceRecord> recordRepo)
         {
-            _repository = repository;
+            _typeRepo = typeRepo;
+            _recordRepo = recordRepo;
         }
 
         public async Task Handle(CompleteMaintenanceCommand request, CancellationToken cancellationToken)
         {
-            // Önce bakım kaydını al
-            var record = await _repository.GetByIdAsync(request.MaintenanceRecordId);
+            // 1) Type kontrolü
+            var type = await _typeRepo.GetByIdAsync(request.maintenanceTypeId);
+            if (type == null)
+                throw new Exception("Bakım tipi bulunamadı.");
+
+            var today = DateTime.Today;
+
+            // 2) Bugünün kaydını bul (repo predicate yoksa GetAllAsync ile filtreleyebilirsin)
+            // İdeal: FirstOrDefaultAsync(predicate) gibi bir metodun olsun.
+            var allRecords = await _recordRepo.GetAllAsync(); // Geçici çözüm, verimli değil
+            var record = allRecords
+                .FirstOrDefault(r => r.MaintenanceTypeId == request.maintenanceTypeId
+                                  && r.ScheduledDate.Date == today);
+
+            // 3) Yoksa oluştur
             if (record == null)
-                throw new Exception("Bakım kaydı bulunamadı.");
+            {
+                record = new MaintenanceRecord
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    MaintenanceTypeId = request.maintenanceTypeId,
+                    ScheduledDate = today,
+                    Status = MaintenanceStatus.Scheduled
+                };
+                await _recordRepo.CreateAsync(record);
+            }
 
-            // Tamamlayan kullanıcı ve notları ata
+            // 4) Gelecek tarih güvenliği (UI zaten göstermiyorsa yine de kalsın)
+            if (record.ScheduledDate.Date > today)
+                throw new Exception("Gelecek tarihli bakım tamamlanamaz.");
+
+            // 5) Tamamla / Kaçırıldı
             record.CompletedByUserId = request.CompletedByUserId;
-            record.CompletedDate = DateTime.Now; // veya request.CompletedDate kullanabilirsin
+            record.CompletedDate = DateTime.Now;
             record.Notes = request.Notes;
+            record.Status = record.ScheduledDate.Date < today
+                ? MaintenanceStatus.Missed
+                : MaintenanceStatus.Completed;
 
-            // Status kontrolü: geçmişse Missed, değilse Completed
-            if (record.ScheduledDate < DateTime.Today)
-                record.Status = MaintenanceStatus.Missed;
-            else
-                record.Status = MaintenanceStatus.Completed;
-
-            await _repository.UpdateAsync(record);
-            await _repository.SaveChangesAsync();
+            await _recordRepo.SaveChangesAsync();
         }
     }
 }

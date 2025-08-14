@@ -1,5 +1,5 @@
 using Application.DTOs;
-using Domain.Entites;
+using Domain.Entities;
 
 namespace Application.Features.Results.CabinetResults;
 

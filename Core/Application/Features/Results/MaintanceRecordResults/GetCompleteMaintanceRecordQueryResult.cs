@@ -1,7 +1,8 @@
-namespace Application.Features.Results.MaintanceRecordResults;
+namespace Application.Features.Results.MaintenanceRecordResults;
 
-public class GetCompleteMaintanceRecordQueryResult
+public class GetCompleteMaintenanceRecordQueryResult
 {
+    public string MaintenanceTypeId { get; set; }
     public string Id { get; set; }
     public string MaintenanceTypeName { get; set; } 
     public DateTime ScheduledDate { get; set; } // Planlanan bakım tarihi

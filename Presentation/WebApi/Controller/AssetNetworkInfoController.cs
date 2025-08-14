@@ -1,6 +1,6 @@
 using Application.Features.Commands.AssetNetworkInfoCommands;
 using Application.Features.Queries.AssetNetworkInfoQueries;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

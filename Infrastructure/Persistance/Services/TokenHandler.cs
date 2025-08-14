@@ -3,11 +3,11 @@ using System.Security.Claims;
 using System.Text;
 using Application.Models;
 using Application.Services;
-using Domain.Entites;
+using Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Persistance.Services;
+namespace Persistence.Services;
 
 public class TokenHandler : ITokenHandler
 {

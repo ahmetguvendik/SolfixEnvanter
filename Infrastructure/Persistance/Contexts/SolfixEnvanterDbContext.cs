@@ -1,8 +1,8 @@
-using Domain.Entites;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistance.Contexts;
+namespace Persistence.Contexts;
 
 public class SolfixEnvanterDbContext: IdentityDbContext<AppUser, AppRole, string>
 {

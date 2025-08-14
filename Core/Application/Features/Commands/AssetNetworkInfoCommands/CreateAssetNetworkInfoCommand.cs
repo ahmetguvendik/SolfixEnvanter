@@ -1,4 +1,4 @@
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Commands.AssetNetworkInfoCommands;

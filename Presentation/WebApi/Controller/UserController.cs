@@ -2,7 +2,7 @@ using Application.Features.Commands.AppUser;
 using Application.Features.Queries.AppUserQueries;
 using Application.Features.Results;
 using Application.Services;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

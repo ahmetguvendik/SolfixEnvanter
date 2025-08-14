@@ -1,5 +1,5 @@
 using Application.Features.Commands.AppUser;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 

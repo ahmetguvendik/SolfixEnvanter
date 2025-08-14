@@ -1,7 +1,7 @@
 using Application.Features.Queries.AssetTypeQueries;
 using Application.Features.Results.AssetTypeResults;
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Handlers.AssetTypeHandlers.Read;

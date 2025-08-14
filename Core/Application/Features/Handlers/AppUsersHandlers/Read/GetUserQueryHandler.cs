@@ -1,6 +1,6 @@
 using Application.Features.Queries.AppUserQueries;
 using Application.Features.Results;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

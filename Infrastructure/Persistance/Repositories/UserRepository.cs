@@ -1,7 +1,7 @@
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Contexts;
+using Persistence.Contexts;
 
 namespace Persistance.Repositories;
 

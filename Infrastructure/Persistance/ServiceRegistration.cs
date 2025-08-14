@@ -1,21 +1,22 @@
 using Application.Interfaces;
 using Application.Models;
 using Application.Services;
-using Domain.Entites;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Persistance.Contexts;
 using Persistance.Repositories;
-using Persistance.Services;
+using Persistence.Contexts;
+using Persistence.Repositories;
+using Persistence.Services;
 
 
-namespace Persistance;
+namespace Persistence;
 
 public static class ServiceRegistration
 {
-    public static void AddPersistanceService(this IServiceCollection collection, IConfiguration configuration)
+    public static void AddPersistenceService(this IServiceCollection collection, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
         collection.AddDbContext<SolfixEnvanterDbContext>(opt =>
@@ -33,7 +34,7 @@ public static class ServiceRegistration
         collection.AddScoped(typeof(ISslCertificateRepository), typeof(SslCertificateRepository));    
         collection.AddScoped(typeof(ICabinetRepository), typeof(CabinetRepository));    
         collection.AddScoped(typeof(IAssetNetworkInfoRepository), typeof(AssetNetworkInfoRepository));    
-        collection.AddScoped(typeof(IMaintanceRecordRepository), typeof(MaintanceRecordRepository));    
+        collection.AddScoped(typeof(IMaintenanceRecordRepository), typeof(MaintenanceRecordRepository));    
 
         
         //Services

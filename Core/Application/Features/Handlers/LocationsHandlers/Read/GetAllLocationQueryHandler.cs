@@ -1,7 +1,7 @@
 using Application.Features.Queries.LocationQueries;
 using Application.Features.Results.LocationsResults;
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Handlers.Locations.Read;

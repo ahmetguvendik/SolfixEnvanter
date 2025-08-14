@@ -1,6 +1,6 @@
-namespace Application.Features.Results.MaintanceTypeResults;
+namespace Application.Features.Results.MaintenanceTypeResults;
 
-public class GetAllMaintanceTypeQueryResult
+public class GetAllMaintenanceTypeQueryResult
 {
     public string Id { get; set; }
     public string Name { get; set; }               // Örn: Haftalık Bakım Formu

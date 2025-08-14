@@ -1,5 +1,5 @@
 using Application.Features.Commands.MaintenanceTypeCommands;
-using Application.Features.Queries.MaintanceTypeQueries;
+using Application.Features.Queries.MaintenanceTypeQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,11 +7,11 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-public class MaintanceTypeController : ControllerBase
+public class MaintenanceTypeController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public MaintanceTypeController(IMediator mediator)
+    public MaintenanceTypeController(IMediator mediator)
     {
          _mediator = mediator;
     }
@@ -26,7 +26,7 @@ public class MaintanceTypeController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var values = await _mediator.Send(new GetAllMaintanceTypeQuery());
+        var values = await _mediator.Send(new GetAllMaintenanceTypeQuery());
         return Ok(values);
     }
 }

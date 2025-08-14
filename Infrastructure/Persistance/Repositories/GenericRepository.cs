@@ -1,8 +1,8 @@
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Contexts;
+using Persistence.Contexts;
 
-namespace Persistance.Repositories;
+namespace Persistence.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T>  where T : class
 {

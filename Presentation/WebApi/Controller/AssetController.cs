@@ -1,6 +1,6 @@
 using Application.Features.Commands;
 using Application.Features.Queries.AssetQueries;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,5 +1,5 @@
 using Application.Features.Results.LocationsResults;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Queries.LocationQueries;

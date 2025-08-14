@@ -1,14 +1,14 @@
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Contexts;
+using Persistence.Contexts;
 
-namespace Persistance.Repositories;
+namespace Persistence.Repositories;
 
-public class MaintanceRecordRepository : IMaintanceRecordRepository
+public class MaintenanceRecordRepository : IMaintenanceRecordRepository
 {
     private readonly SolfixEnvanterDbContext  _context;
 
-    public MaintanceRecordRepository(SolfixEnvanterDbContext context)
+    public MaintenanceRecordRepository(SolfixEnvanterDbContext context)
     {
          _context = context;
     }
@@ -17,5 +17,25 @@ public class MaintanceRecordRepository : IMaintanceRecordRepository
     {
         var values = await _context.MaintenanceRecords.Include(x=>x.MaintenanceType).Include(y=>y.CompletedByUser).ToListAsync();
         return values;
+    }
+
+    public async Task<List<MaintenanceRecord>> GetTodayRecordsWithUserAndType(DateTime date)
+    {
+        var day = date.Date;
+        return await _context.MaintenanceRecords
+            .Include(x => x.MaintenanceType)
+            .Include(y => y.CompletedByUser)
+            .Where(r => r.ScheduledDate.Date == day)
+            .ToListAsync();
+    }
+
+    public async Task<List<MaintenanceRecord>> GetTodayCompletedByUser(string userId, DateTime date)
+    {
+        var day = date.Date;
+        return await _context.MaintenanceRecords
+            .Include(x => x.MaintenanceType)
+            .Include(y => y.CompletedByUser)
+            .Where(r => r.ScheduledDate.Date == day && r.CompletedByUserId == userId)
+            .ToListAsync();
     }
 }

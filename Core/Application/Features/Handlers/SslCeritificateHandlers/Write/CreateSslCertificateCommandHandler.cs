@@ -2,7 +2,7 @@ using Application.Features.Commands.SslCertificateCommands;
 using Application.Interfaces;
 using MediatR;
 
-namespace Application.Features.Handlers.SslCeritificateHandlers.Write;
+namespace Application.Features.Handlers.SslCertificateHandlers.Write;
 
 public class CreateSslCertificateCommandHandler : IRequestHandler<CreateSslCertificateCommand>
 {

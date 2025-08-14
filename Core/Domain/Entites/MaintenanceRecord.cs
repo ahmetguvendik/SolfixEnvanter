@@ -1,4 +1,4 @@
-using Domain.Entites;
+using Domain.Entities;
 
 public class MaintenanceRecord : BaseEntity
 {

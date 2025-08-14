@@ -3,7 +3,7 @@ using Application.Features.Results.SslCertificateResults;
 using Application.Interfaces;
 using MediatR;
 
-namespace Application.Features.Handlers.SslCeritificateHandlers.Read;
+namespace Application.Features.Handlers.SslCertificateHandlers.Read;
 
 public class GetAllSslCertificateQueryHandler : IRequestHandler<GetAllSslCertificateQuery, IList<GetAllSslCertificateQueryResult>>
 {

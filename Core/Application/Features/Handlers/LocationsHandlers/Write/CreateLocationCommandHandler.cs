@@ -1,6 +1,6 @@
 using Application.Features.Commands;
 using Application.Interfaces;
-using Domain.Entites;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Handlers.Locations.Write;
