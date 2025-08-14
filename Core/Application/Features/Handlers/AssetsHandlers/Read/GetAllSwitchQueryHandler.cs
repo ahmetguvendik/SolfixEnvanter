@@ -15,7 +15,7 @@ public class GetAllSwitchQueryHandler  : IRequestHandler<GetAllSwitchQuery, List
     }
     public async Task<List<GetAllPrinterQueryResult>> Handle(GetAllSwitchQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("6");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("6", cancellationToken);
         return values.Select(x=> new GetAllPrinterQueryResult()
         {
             Name = x.Name,

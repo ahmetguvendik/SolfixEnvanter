@@ -17,7 +17,7 @@ public class GetAllDesktopQueryHandler : IRequestHandler<GetAllDesktopQuery, Lis
     
     public async Task<List<GetAllDesktopQueryResult>> Handle(GetAllDesktopQuery request, CancellationToken cancellationToken)
     {
-        var assets = await _assetRepository.GetAllByAssetTypeIdAsync("1");  
+        var assets = await _assetRepository.GetAllByAssetTypeIdAsync("1", cancellationToken);  
         return assets.Select(x => new GetAllDesktopQueryResult
         {
             Name = x.Name,

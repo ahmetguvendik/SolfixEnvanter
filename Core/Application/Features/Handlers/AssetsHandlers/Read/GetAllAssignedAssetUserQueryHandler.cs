@@ -16,7 +16,7 @@ public class GetAllAssignedAssetUserQueryHandler : IRequestHandler<GetAllAssigne
     
     public async Task<List<GetAllAssignedUserAseetQueryResult>> Handle(GetAllAssignedAssetUserQuery request, CancellationToken cancellationToken)
     {
-       var values = await _assetRepository.GetAllAssignedUser();
+       var values = await _assetRepository.GetAllAssignedUser(cancellationToken);
        return values.Select(x => new GetAllAssignedUserAseetQueryResult()
        {
            Name = x.Name,

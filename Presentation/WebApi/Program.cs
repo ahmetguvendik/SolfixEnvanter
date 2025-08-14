@@ -4,8 +4,17 @@ using Persistence;
 using Application;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
+using Serilog.Context;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Serilog bootstrap
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 
 builder.Services.AddControllers();
@@ -47,8 +56,8 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyMethod()
                 .AllowAnyHeader()
-                .AllowCredentials() // SignalR için MUTLAKA OLMALI
-                .SetIsOriginAllowed(origin => true); // Development için '*' gibi düşünebilirsiniz, ancak güvenlik için spesifik origin belirtmek daha iyidir.
+                .AllowCredentials() 
+                .SetIsOriginAllowed(origin => true); 
         });
 });
 
@@ -65,6 +74,28 @@ app.UseCors("AllowAll");
 
 
 app.UseHttpsRedirection();
+
+// HTTP request logging (Serilog)
+app.UseSerilogRequestLogging();
+
+// Enrich logs with user/context info
+app.Use(async (context, next) =>
+{
+    var userId = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                 ?? context.User?.FindFirst("sub")?.Value
+                 ?? string.Empty;
+    var userName = context.User?.Identity?.Name ?? string.Empty;
+    var path = context.Request?.Path.Value ?? string.Empty;
+    var ip = context.Connection?.RemoteIpAddress?.ToString() ?? string.Empty;
+
+    using (LogContext.PushProperty("UserId", userId))
+    using (LogContext.PushProperty("UserName", userName))
+    using (LogContext.PushProperty("RequestPath", path))
+    using (LogContext.PushProperty("ClientIp", ip))
+    {
+        await next();
+    }
+});
 
 app.UseStaticFiles();
 

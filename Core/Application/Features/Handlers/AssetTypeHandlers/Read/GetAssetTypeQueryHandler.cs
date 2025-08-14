@@ -17,7 +17,7 @@ public class GetAssetTypeQueryHandler : IRequestHandler<GetAssetTypeQuery, List<
     
     public async Task<List<GetAssetTypeQueryResults>> Handle(GetAssetTypeQuery request, CancellationToken cancellationToken)
     {
-        var results = await _assetTypeRepository.GetAllAsync();
+        var results = await _assetTypeRepository.GetAllAsync(cancellationToken);
         return results.Select(x => new GetAssetTypeQueryResults()
         {
             Id = x.Id,

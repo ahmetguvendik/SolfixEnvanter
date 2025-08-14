@@ -19,7 +19,7 @@ public class CreateLocationCommandHandler : IRequestHandler<CreateLocationComman
         Location location = new Location();
         location.Id = Guid.NewGuid().ToString();
         location.Name = request.Name;
-        await _repository.CreateAsync(location);
-        await _repository.SaveChangesAsync();
+        await _repository.CreateAsync(location, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
     }
 }

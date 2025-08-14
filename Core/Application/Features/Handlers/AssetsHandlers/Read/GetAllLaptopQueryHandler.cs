@@ -17,7 +17,7 @@ public class GetAllLaptopQueryHandler : IRequestHandler<GetAllLaptopQuery, List<
     
     public async Task<List<GetAllLaptopQueryResult>> Handle(GetAllLaptopQuery request, CancellationToken cancellationToken)
     {
-        var assets = await _assetRepository.GetAllByAssetTypeIdAsync("2");  
+        var assets = await _assetRepository.GetAllByAssetTypeIdAsync("2", cancellationToken);  
         return assets.Select(x => new GetAllLaptopQueryResult
         {
             Name = x.Name,

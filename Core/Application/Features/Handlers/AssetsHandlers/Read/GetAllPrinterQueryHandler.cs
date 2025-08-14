@@ -17,7 +17,7 @@ public class GetAllPrinterQueryHandler : IRequestHandler<GetAllPrinterQuery, Lis
     
     public async Task<List<GetAllPrinterQueryResult>> Handle(GetAllPrinterQuery request, CancellationToken cancellationToken)
     {
-        var results = await _assetRepository.GetAllByAssetTypeIdAsync("3");
+        var results = await _assetRepository.GetAllByAssetTypeIdAsync("3", cancellationToken);
         return results.Select(x => new GetAllPrinterQueryResult
         {
             Name = x.Name,

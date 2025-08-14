@@ -16,7 +16,7 @@ public class GetAllTVQueryHandler  : IRequestHandler<GetAllTVQuery, List<GetAllT
     
     public async Task<List<GetAllTVQueryResult>> Handle(GetAllTVQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("13");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("13", cancellationToken);
         return values.Select(x=> new GetAllTVQueryResult()
         {
             Name = x.Name,

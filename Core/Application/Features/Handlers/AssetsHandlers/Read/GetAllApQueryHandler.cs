@@ -16,7 +16,7 @@ public class GetAllApQueryHandler  : IRequestHandler<GetAllApQuery, List<GetAllA
     
     public async Task<List<GetAllApQueryResult>> Handle(GetAllApQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("8");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("8", cancellationToken);
         return values.Select(x=> new  GetAllApQueryResult()
         {
             Name = x.Name,

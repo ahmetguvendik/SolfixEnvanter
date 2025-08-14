@@ -29,8 +29,8 @@ public class CreateCabinetCommandHandler : IRequestHandler<CreateCabinetCommand>
         cabinet.PowerFeed = request.PowerFeed;
         cabinet.SerialNumber = request.SerialNumber;
         cabinet.UHeight = request.UHeight;
-        await _cabinetRepository.CreateAsync(cabinet);
-        await _cabinetRepository.SaveChangesAsync();
+        await _cabinetRepository.CreateAsync(cabinet, cancellationToken);
+        await _cabinetRepository.SaveChangesAsync(cancellationToken);
 
     }
 }

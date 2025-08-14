@@ -16,7 +16,7 @@ public class GetAllDomainNameQueryHandler  : IRequestHandler<GetAllDomainNameQue
     
     public async Task<List<GetAllDomainNameQueryResult>> Handle(GetAllDomainNameQuery request, CancellationToken cancellationToken)
     {
-        var values =  await _repository.GetAllAsync();
+        var values =  await _repository.GetAllAsync(cancellationToken);
         return values.Select(x => new GetAllDomainNameQueryResult
         {
             Id = x.Id,

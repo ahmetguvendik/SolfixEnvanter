@@ -22,7 +22,7 @@ public class CreateInternetLinesCommadHandler : IRequestHandler<CreateInternetLi
         internetLine.LocationId = request.LocationId;
         internetLine.LineNumber = request.LineNumber;
         internetLine.Provider = request.Provider;
-        await _repository.CreateAsync(internetLine);
-        await _repository.SaveChangesAsync();
+        await _repository.CreateAsync(internetLine, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
     }
 }

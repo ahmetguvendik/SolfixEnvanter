@@ -16,7 +16,7 @@ public class GetAllWindowsKeyQueryHandler  : IRequestHandler<GetAllWindowsKeyQue
     
     public async Task<IList<GetAllModemQueryResult>> Handle(GetAllWindowsKeyQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("11");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("11", cancellationToken);
         return values.Select(x=> new GetAllModemQueryResult()
         {
             Name = x.Name,

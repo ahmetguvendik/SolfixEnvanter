@@ -17,7 +17,7 @@ public class GetDepartmentQueryHandler : IRequestHandler<GetDepartmentQuery, Lis
     
     public async Task<List<GetDepartmentQueryResult>> Handle(GetDepartmentQuery request, CancellationToken cancellationToken)
     {
-        var result = await _departmentRepository.GetAllAsync();
+        var result = await _departmentRepository.GetAllAsync(cancellationToken);
         return result.Select(x => new GetDepartmentQueryResult()
         {
             Id = x.Id,

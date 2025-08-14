@@ -20,7 +20,7 @@
             maintance.Name = request.Name;
             maintance.StartDate = request.StartDate;
             maintance.Period  = request.Period;
-            await _repository.CreateAsync(maintance);
-            await _repository.SaveChangesAsync();
+            await _repository.CreateAsync(maintance, cancellationToken);
+            await _repository.SaveChangesAsync(cancellationToken);
         }
     }

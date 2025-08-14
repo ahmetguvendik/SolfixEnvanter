@@ -16,7 +16,7 @@ public class GetAllSystemSoftwareQueryHandler  : IRequestHandler<GetAllSystemSof
     
     public async Task<IList<GetAllSystemSoftwareQueryResult>> Handle(GetAllSystemSoftwareQuery request, CancellationToken cancellationToken)
     {
-        var values = await _repository.GetAllByAssetTypeIdAsync("12");
+        var values = await _repository.GetAllByAssetTypeIdAsync("12", cancellationToken);
         return values.Select(x=> new GetAllSystemSoftwareQueryResult()
         {
             Name = x.Name,

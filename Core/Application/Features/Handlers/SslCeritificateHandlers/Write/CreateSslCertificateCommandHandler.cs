@@ -24,7 +24,7 @@ public class CreateSslCertificateCommandHandler : IRequestHandler<CreateSslCerti
         ssl.CommonName = request.CommonName;
         ssl.DomainId =  request.DomainId;
         ssl.StartDate = request.StartDate;
-        await _repository.CreateAsync(ssl);
-        await _repository.SaveChangesAsync();
+        await _repository.CreateAsync(ssl, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
     }
 }

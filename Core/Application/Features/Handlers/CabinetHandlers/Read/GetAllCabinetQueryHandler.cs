@@ -17,7 +17,7 @@ public class GetAllCabinetQueryHandler : IRequestHandler<GetAllCabinetQuery, ILi
     
     public async Task<IList<GetAllCabinetQueryResult>> Handle(GetAllCabinetQuery request, CancellationToken cancellationToken)
     {
-        var  cabinets = await _cabinetRepository.GetAllAsync();
+        var  cabinets = await _cabinetRepository.GetAllAsync(cancellationToken);
         return cabinets.Select(x => new GetAllCabinetQueryResult
         {
             Id = x.Id,

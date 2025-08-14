@@ -16,7 +16,7 @@ public class GetAllFirewallQueryHandler  : IRequestHandler<GetAllFirewallQuery, 
     
     public async Task<List<GetAllFirewallQueryResult>> Handle(GetAllFirewallQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("9");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("9", cancellationToken);
         return values.Select(x=> new GetAllFirewallQueryResult()
         {
             Name = x.Name,

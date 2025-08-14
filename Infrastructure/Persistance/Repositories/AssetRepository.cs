@@ -17,25 +17,29 @@ public class AssetRepository  : IAssetRepository
 
 
 
-    public async Task<List<Asset>> GetAllByAssetTypeIdAsync(string assetTypeId)
+    public async Task<List<Asset>> GetAllByAssetTypeIdAsync(string assetTypeId, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Assets
+            .AsNoTracking()
+            .AsSplitQuery()
             .Include(a => a.Location)
             .Include(a => a.Department)
             .Include(a => a.AssignedToUser)
             .Include(a => a.AssetType)
             .Where(a => a.AssetTypeId == assetTypeId)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task<List<Asset>> GetAllAssignedUser()
+    public async Task<List<Asset>> GetAllAssignedUser(CancellationToken cancellationToken = default)
     {
         return await _dbContext.Assets
+            .AsNoTracking()
+            .AsSplitQuery()
             .Include(a => a.Location)
             .Include(a => a.Department)
             .Include(a => a.AssignedToUser)
             .Include(a => a.AssetType)
             .Where(a => a.AssignedToUserId != null)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 }

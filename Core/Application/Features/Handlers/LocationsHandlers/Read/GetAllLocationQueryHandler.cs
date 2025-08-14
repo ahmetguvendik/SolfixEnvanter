@@ -16,7 +16,7 @@ public class GetAllLocationQueryHandler  : IRequestHandler<GetAllLocationQuery, 
     }
     public async Task<List<GetAllLocationQueryResult>> Handle(GetAllLocationQuery request, CancellationToken cancellationToken)
     {
-        var  result = await _locationRepository.GetAllAsync();
+        var  result = await _locationRepository.GetAllAsync(cancellationToken);
         return result.Select(x=> new GetAllLocationQueryResult()
         {
             Id = x.Id,

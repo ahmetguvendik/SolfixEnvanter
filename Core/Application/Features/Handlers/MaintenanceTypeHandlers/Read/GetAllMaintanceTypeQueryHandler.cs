@@ -18,7 +18,7 @@ public class GetAllMaintenanceTypeQueryHandler : IRequestHandler<GetAllMaintenan
     
     public async Task<List<GetAllMaintenanceTypeQueryResult>> Handle(GetAllMaintenanceTypeQuery request, CancellationToken cancellationToken)
     {
-        var values = await _repository.GetAllAsync();
+        var values = await _repository.GetAllAsync(cancellationToken);
         return values.Select(x => new GetAllMaintenanceTypeQueryResult
         {
             Id = x.Id,

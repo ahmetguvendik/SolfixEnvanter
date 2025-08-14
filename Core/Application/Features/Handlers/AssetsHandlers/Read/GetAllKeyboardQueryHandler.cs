@@ -16,7 +16,7 @@ public class GetAllKeyboardQueryHandler : IRequestHandler<GetAllKeyboardQuery, L
     
     public async Task<List<GetAllKeyboardQueryResult>> Handle(GetAllKeyboardQuery request, CancellationToken cancellationToken)
     {
-        var results = await _assetRepository.GetAllByAssetTypeIdAsync("5");
+        var results = await _assetRepository.GetAllByAssetTypeIdAsync("5", cancellationToken);
         return results.Select(x => new GetAllKeyboardQueryResult()
         {
             Name = x.Name,

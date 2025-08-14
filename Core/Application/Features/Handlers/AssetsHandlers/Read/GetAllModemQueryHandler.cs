@@ -16,7 +16,7 @@ public class GetAllModemQueryHandler  : IRequestHandler<GetAllModemQuery, List<G
     
     public async Task<List<GetAllModemQueryResult>> Handle(GetAllModemQuery request, CancellationToken cancellationToken)
     {
-        var values = await _assetRepository.GetAllByAssetTypeIdAsync("10");
+        var values = await _assetRepository.GetAllByAssetTypeIdAsync("10", cancellationToken);
         return values.Select(x=> new GetAllModemQueryResult()
         {
             Name = x.Name,

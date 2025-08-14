@@ -13,9 +13,15 @@ public class CabinetRepository  : ICabinetRepository
          _context = context;
     }
     
-    public async Task<IList<Cabinet>> GetAllAsync()
+    public async Task<IList<Cabinet>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        var values = await _context.Cabinets.Include(x=>x.Location).Include(y=>y.Assets).ThenInclude(z=>z.AssetType).ToListAsync();
+        var values = await _context.Cabinets
+            .AsNoTracking()
+            .AsSplitQuery()
+            .Include(x=>x.Location)
+            .Include(y=>y.Assets)
+            .ThenInclude(z=>z.AssetType)
+            .ToListAsync(cancellationToken);
         return values;
     }
 }

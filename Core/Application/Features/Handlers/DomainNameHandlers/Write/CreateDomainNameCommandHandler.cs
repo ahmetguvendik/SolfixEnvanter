@@ -27,8 +27,8 @@ public class CreateDomainNameCommandHandler : IRequestHandler<CreateDomainNameCo
         domainName.Registrar = request.Registrar;
         domainName.RegistrationDate = request.RegistrationDate;
         domainName.ServerIP = request.ServerIP;
-        await _repository.CreateAsync(domainName);
-        await _repository.SaveChangesAsync();
+        await _repository.CreateAsync(domainName, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
         
     }
 }
