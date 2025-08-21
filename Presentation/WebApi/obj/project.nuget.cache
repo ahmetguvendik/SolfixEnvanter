@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "erbxHRjDILo=",
+  "dgSpecHash": "tht/XWyjzUg=",
   "success": true,
   "projectFilePath": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
@@ -84,6 +84,8 @@
     "/Users/ahmetguvendik/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/serilog/4.2.0/serilog.4.2.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/serilog.aspnetcore/9.0.0/serilog.aspnetcore.9.0.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/serilog.enrichers.environment/2.3.0/serilog.enrichers.environment.2.3.0.nupkg.sha512",
+    "/Users/ahmetguvendik/.nuget/packages/serilog.enrichers.thread/3.1.0/serilog.enrichers.thread.3.1.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/serilog.extensions.hosting/9.0.0/serilog.extensions.hosting.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/serilog.extensions.logging/9.0.0/serilog.extensions.logging.9.0.0.nupkg.sha512",
     "/Users/ahmetguvendik/.nuget/packages/serilog.formatting.compact/3.0.0/serilog.formatting.compact.3.0.0.nupkg.sha512",

@@ -3,6 +3,7 @@ using Application.Features.Queries.AssetQueries;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApi.Controller;
 
@@ -11,17 +12,21 @@ namespace WebApi.Controller;
 public class AssetController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<AssetController> _logger;
 
-    public AssetController(IMediator mediator)
+    public AssetController(IMediator mediator, ILogger<AssetController> logger)
     {
         _mediator = mediator;
+        _logger = logger;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateAsset([FromBody] CreateAssetCommand asset)
     {
-         await _mediator.Send(asset);
-         return Ok("Eklendi");
+        _logger.LogInformation("Creating asset: {AssetName}", asset.Name);
+        await _mediator.Send(asset);
+        _logger.LogInformation("Asset created successfully: {AssetName}", asset.Name);
+        return Ok("Eklendi");
     }
 
     [HttpGet("GetAllDesktop")]
@@ -125,8 +130,23 @@ public class AssetController : ControllerBase
     [HttpGet("GetAllAssets")]
     public async Task<IActionResult> GetAllAssets()
     {
+        _logger.LogInformation("Getting all assets");
         var values = await _mediator.Send(new GetAllAssetsQuery());
+        _logger.LogInformation("Retrieved {Count} assets", values?.Count ?? 0);
         return Ok(values);
+    }
+    
+    [HttpGet("test-logging")]
+    public IActionResult TestLogging()
+    {
+        _logger.LogTrace("This is a trace message");
+        _logger.LogDebug("This is a debug message");
+        _logger.LogInformation("This is an information message");
+        _logger.LogWarning("This is a warning message");
+        _logger.LogError("This is an error message");
+        _logger.LogCritical("This is a critical message");
+        
+        return Ok("Logging test completed. Check console and database for logs.");
     }
     
 }

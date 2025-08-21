@@ -6,6 +6,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApi.Controller;
 
@@ -16,13 +17,15 @@ public class UserController : ControllerBase
     private readonly IMediator _mediator;
     private readonly ITokenHandler _tokenHandler;
     private readonly UserManager<AppUser> _userManager;
+    private readonly ILogger<UserController> _logger;
 
 
-    public UserController(IMediator mediator, ITokenHandler tokenHandler, UserManager<AppUser> userManager)
+    public UserController(IMediator mediator, ITokenHandler tokenHandler, UserManager<AppUser> userManager, ILogger<UserController> logger)
     {
           _mediator = mediator;
           _tokenHandler = tokenHandler;
           _userManager = userManager;
+          _logger = logger;
     }
 
     [HttpPost]
@@ -36,21 +39,33 @@ public class UserController : ControllerBase
     [HttpPost("jwt-login")]
     public async Task<IActionResult> JwtLogin([FromBody] LoginUserCommand command)
     {
+        _logger.LogInformation("Login attempt for user: {Username}", command?.Username ?? "null");
+        
         if (command == null)
+        {
+            _logger.LogWarning("Login attempt with null command");
             return BadRequest("Invalid request");
+        }
 
         var result = await _mediator.Send(command);
 
         if (result == null || string.IsNullOrEmpty(result.Role))
+        {
+            _logger.LogWarning("Login failed for user: {Username}", command.Username);
             return Unauthorized("Invalid credentials");
+        }
 
         // Kullanıcıyı bul
         var user = await _userManager.FindByNameAsync(command.Username);
         if (user == null)
+        {
+            _logger.LogWarning("User not found: {Username}", command.Username);
             return Unauthorized("User not found");
+        }
 
         // JWT token oluştur
         var token = _tokenHandler.CreateAccessToken(user, result.Role);
+        _logger.LogInformation("Login successful for user: {Username}", command.Username);
 
         return Ok(new
         {
@@ -71,5 +86,18 @@ public class UserController : ControllerBase
     {
         var users = await _mediator.Send(new GetUserByIdQuery(id));
         return Ok(users);
+    }
+    
+    [HttpGet("test-db-logging")]
+    public IActionResult TestDbLogging()
+    {
+        _logger.LogTrace("DB Test - Trace message");
+        _logger.LogDebug("DB Test - Debug message");
+        _logger.LogInformation("DB Test - Information message");
+        _logger.LogWarning("DB Test - Warning message");
+        _logger.LogError("DB Test - Error message");
+        _logger.LogCritical("DB Test - Critical message");
+        
+        return Ok("Database logging test completed. Check the Logs table in your database.");
     }
 }

@@ -197,3 +197,5 @@
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Serilog.Sinks.MSSqlServer.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Serilog.Sinks.PeriodicBatching.dll
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/WebApi.staticwebassets.runtime.json
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Serilog.Enrichers.Environment.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/bin/Debug/net9.0/Serilog.Enrichers.Thread.dll

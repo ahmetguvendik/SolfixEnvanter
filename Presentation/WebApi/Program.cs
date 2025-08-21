@@ -6,15 +6,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Context;
+using Serilog.Sinks.MSSqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Serilog bootstrap
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
     .CreateLogger();
 
-builder.Host.UseSerilog();
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext());
 
 
 builder.Services.AddControllers();
@@ -26,7 +31,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService(builder.Configuration);
-var jwtSettings = builder.Configuration.GetSection("Jwt").Get<Application.Models.JwtSettings>();
+var jwtSettings = builder.Configuration.GetSection("Jwt").Get<Application.Models.JwtSettings>() ?? new Application.Models.JwtSettings();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,6 +68,9 @@ builder.Services.AddCors(options =>
 
 
 var app = builder.Build();
+
+// Log application startup
+Log.Information("Starting up SolfixEnvanter Web API");
 
 // Swagger UI sadece development ortamında aktif olur
 if (app.Environment.IsDevelopment())
@@ -104,4 +112,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+    Log.Information("Starting SolfixEnvanter Web API");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

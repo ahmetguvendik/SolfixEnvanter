@@ -340,6 +340,14 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Serilog.Enrichers.Thread": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Serilog.Settings.Configuration": {
               "target": "Package",
               "version": "[9.0.0, )"

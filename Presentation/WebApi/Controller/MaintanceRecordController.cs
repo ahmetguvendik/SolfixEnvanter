@@ -30,5 +30,13 @@ public class MaintenanceRecordController  : ControllerBase
         var values = await _mediator.Send(new GetCompleteMaintenanceRecordQuery { Date = date });
         return Ok(values);
     }
+
+    [HttpGet("GetAllMaintenanceRecords")]
+
+    public async Task<IActionResult> GetAll()   
+    {
+        var values = await _mediator.Send(new GetAllCompleteMaintenanceRecordQuery());
+        return Ok(values);
+    }
     
 }
