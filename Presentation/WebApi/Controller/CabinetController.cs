@@ -3,11 +3,15 @@ using Application.Features.Commands.CabinetCommands;
 using Application.Features.Queries.CabinetQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class CabinetController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -20,14 +24,40 @@ public class CabinetController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var cabinets = await _mediator.Send(new GetAllCabinetQuery());
-        return Ok(cabinets);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all cabinets", userId, userName);
+            
+            var cabinets = await _mediator.Send(new GetAllCabinetQuery());
+            return Ok(cabinets);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllCabinets)");
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateCabinetCommand command)
     {
-        await _mediator.Send(command);
-        return Ok("Cabinet created");
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is creating a new cabinet: {CabinetName}", userId, userName, command.Name);
+            
+            await _mediator.Send(command);
+            return Ok("Cabinet created");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Post (CreateCabinet)");
+            return StatusCode(500, "Internal server error");
+        }
     }
 }

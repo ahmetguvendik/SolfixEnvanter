@@ -14,12 +14,24 @@ var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
+    .Filter.ByExcluding(e => 
+        e.Properties.ContainsKey("SourceContext") && 
+        (e.Properties["SourceContext"].ToString().Contains("MediatR") ||
+         e.Properties["SourceContext"].ToString().Contains("MediatR.Mediator") ||
+         e.Properties["SourceContext"].ToString().Contains("MediatR.Pipeline")))
+    .Filter.ByExcluding(e => e.MessageTemplate.Text.Contains("Handling") || e.MessageTemplate.Text.Contains("Handled"))
     .CreateLogger();
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .ReadFrom.Configuration(context.Configuration)
     .ReadFrom.Services(services)
-    .Enrich.FromLogContext());
+    .Enrich.FromLogContext()
+    .Filter.ByExcluding(e => 
+        e.Properties.ContainsKey("SourceContext") && 
+        (e.Properties["SourceContext"].ToString().Contains("MediatR") ||
+         e.Properties["SourceContext"].ToString().Contains("MediatR.Mediator") ||
+         e.Properties["SourceContext"].ToString().Contains("MediatR.Pipeline")))
+    .Filter.ByExcluding(e => e.MessageTemplate.Text.Contains("Handling") || e.MessageTemplate.Text.Contains("Handled")));
 
 
 builder.Services.AddControllers();
@@ -83,32 +95,58 @@ app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
-// HTTP request logging (Serilog)
-app.UseSerilogRequestLogging();
-
-// Enrich logs with user/context info
-app.Use(async (context, next) =>
-{
-    var userId = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                 ?? context.User?.FindFirst("sub")?.Value
-                 ?? string.Empty;
-    var userName = context.User?.Identity?.Name ?? string.Empty;
-    var path = context.Request?.Path.Value ?? string.Empty;
-    var ip = context.Connection?.RemoteIpAddress?.ToString() ?? string.Empty;
-
-    using (LogContext.PushProperty("UserId", userId))
-    using (LogContext.PushProperty("UserName", userName))
-    using (LogContext.PushProperty("RequestPath", path))
-    using (LogContext.PushProperty("ClientIp", ip))
-    {
-        await next();
-    }
-});
+// HTTP request logging (Serilog) - Disabled
+// app.UseSerilogRequestLogging();
 
 app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Enrich logs with user/context info
+app.Use(async (context, next) =>
+{
+    var userId = string.Empty;
+    var userName = string.Empty;
+    
+    // JWT token'dan user bilgilerini çıkar
+    if (context.User?.Identity?.IsAuthenticated == true)
+    {
+        // Önce NameIdentifier claim'ini dene
+        userId = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
+        // Eğer yoksa "sub" claim'ini dene (JWT standard)
+        if (string.IsNullOrEmpty(userId))
+        {
+            userId = context.User?.FindFirst("sub")?.Value;
+        }
+        
+        // Eğer hala yoksa "userId" claim'ini dene
+        if (string.IsNullOrEmpty(userId))
+        {
+            userId = context.User?.FindFirst("userId")?.Value;
+        }
+        
+        // Username'i al
+        userName = context.User?.Identity?.Name ?? 
+                   context.User?.FindFirst(ClaimTypes.Name)?.Value ??
+                   context.User?.FindFirst("username")?.Value ??
+                   string.Empty;
+    }
+    
+    var path = context.Request?.Path.Value ?? string.Empty;
+    var ip = context.Connection?.RemoteIpAddress?.ToString() ?? string.Empty;
+    var method = context.Request?.Method ?? string.Empty;
+
+    using (LogContext.PushProperty("UserId", userId))
+    using (LogContext.PushProperty("UserName", userName))
+    using (LogContext.PushProperty("RequestPath", path))
+    using (LogContext.PushProperty("RequestMethod", method))
+    using (LogContext.PushProperty("ClientIp", ip))
+    {
+        await next();
+    }
+});
 
 app.MapControllers();
 

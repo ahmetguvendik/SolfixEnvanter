@@ -3,11 +3,14 @@ using Application.Features.Queries.AssignmentFormQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class AssignmentFormController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -22,6 +25,11 @@ public class AssignmentFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is creating a new assignment form", userId, userName);
+            
             await _mediator.Send(command);
             return Ok("Assignment form created successfully");
         }
@@ -37,6 +45,11 @@ public class AssignmentFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all assignment forms", userId, userName);
+            
             var values = await _mediator.Send(new GetAllAssignmentFormQuery());
             return Ok(values);
         }
@@ -52,6 +65,11 @@ public class AssignmentFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is deleting assignment form with ID: {AssignmentFormId}", userId, userName, id);
+            
             await _mediator.Send(new DeleteAssignmentFormCommand { Id = id });
             return Ok("Assignment form deleted successfully");
         }

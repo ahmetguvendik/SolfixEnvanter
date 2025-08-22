@@ -2,7 +2,6 @@ using Application.Features.Commands.MaintenanceRecordCommands;
 using Application.Interfaces;
 using Domain.Entities;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Handlers.MaintenanceRecordHandlers.Write
@@ -11,30 +10,24 @@ namespace Application.Features.Handlers.MaintenanceRecordHandlers.Write
     {
         private readonly IGenericRepository<MaintenanceType> _typeRepo;
         private readonly IGenericRepository<MaintenanceRecord> _recordRepo;
-        private readonly ILogger<CompleteMaintenanceByTypeCommandHandler> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public CompleteMaintenanceByTypeCommandHandler(
             IGenericRepository<MaintenanceType> typeRepo,
             IGenericRepository<MaintenanceRecord> recordRepo,
-            ILogger<CompleteMaintenanceByTypeCommandHandler> logger,
             IHttpContextAccessor httpContextAccessor)
         {
             _typeRepo = typeRepo;
             _recordRepo = recordRepo;
-            _logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task Handle(CompleteMaintenanceCommand request, CancellationToken cancellationToken)
         {
             // 1) Type kontrolü
-            var userId = _httpContextAccessor.HttpContext?.User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            _logger.LogInformation("User {UserId} completing maintenance for type {TypeId}", userId, request.maintenanceTypeId);
             var type = await _typeRepo.GetByIdAsync(request.maintenanceTypeId, cancellationToken);
             if (type == null)
             {
-                _logger.LogWarning("Maintenance type not found: {TypeId}", request.maintenanceTypeId);
                 throw new Exception("Bakım tipi bulunamadı.");
             }
 
@@ -73,8 +66,6 @@ namespace Application.Features.Handlers.MaintenanceRecordHandlers.Write
                 : MaintenanceStatus.Completed;
 
             await _recordRepo.SaveChangesAsync(cancellationToken);
-            _logger.LogInformation("User {UserId} completed maintenance for type {TypeId}, record {RecordId}, status {Status}",
-                userId, request.maintenanceTypeId, record.Id, record.Status);
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Application.Features.Commands.ProcedureCommands;
 using Application.Features.Queries.ProcedureQueries;
 using MediatR;
@@ -8,6 +10,7 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ProcedureController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -22,6 +25,11 @@ public class ProcedureController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is creating a new procedure", userId, userName);
+            
             await _mediator.Send(command);
             return Ok("Procedure created successfully");
         }
@@ -37,6 +45,11 @@ public class ProcedureController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all procedures", userId, userName);
+            
             var values = await _mediator.Send(new GetAllProcedureQuery());
             return Ok(values);
         }
@@ -52,6 +65,11 @@ public class ProcedureController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is deleting procedure with ID: {ProcedureId}", userId, userName, id);
+            
             await _mediator.Send(new DeleteProcedureCommand { Id = id });
             return Ok("Procedure deleted successfully");
         }

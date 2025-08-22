@@ -27,6 +27,7 @@ public class TokenHandler : ITokenHandler
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
             new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
             new Claim(ClaimTypes.Role, role ?? string.Empty),
             new Claim("DepartmentId", user.DepartmentId ?? string.Empty)

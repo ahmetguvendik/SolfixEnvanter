@@ -18,30 +18,30 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\.gitkeep'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\assignments\0ccdc628-6e97-41bc-a541-6d11374db4c4.pdf'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\74107ce4-a422-4834-a5c0-ba1a5488ad1e.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApi</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/WebApi</BasePath>
-      <RelativePath>uploads/assignments/0ccdc628-6e97-41bc-a541-6d11374db4c4.pdf</RelativePath>
+      <RelativePath>uploads/forms/74107ce4-a422-4834-a5c0-ba1a5488ad1e.pdf</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>o80ht802uu</Fingerprint>
-      <Integrity>ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=</Integrity>
+      <Fingerprint>3mjkebwyog</Fingerprint>
+      <Integrity>tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\assignments\0ccdc628-6e97-41bc-a541-6d11374db4c4.pdf'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\74107ce4-a422-4834-a5c0-ba1a5488ad1e.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\5964497f-2eb9-41bb-b748-3798465e6b73.pdf'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procedures\2d1e6430-6bec-4f76-8e0b-45c3fd7a4b8f.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>WebApi</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/WebApi</BasePath>
-      <RelativePath>uploads/forms/5964497f-2eb9-41bb-b748-3798465e6b73.pdf</RelativePath>
+      <RelativePath>uploads/procedures/2d1e6430-6bec-4f76-8e0b-45c3fd7a4b8f.pdf</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -52,25 +52,7 @@
       <Integrity>ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\5964497f-2eb9-41bb-b748-3798465e6b73.pdf'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\8f799543-84b7-440b-8734-54785ebe866e.pdf'))">
-      <SourceType>Package</SourceType>
-      <SourceId>WebApi</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/WebApi</BasePath>
-      <RelativePath>uploads/forms/8f799543-84b7-440b-8734-54785ebe866e.pdf</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>o80ht802uu</Fingerprint>
-      <Integrity>ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\forms\8f799543-84b7-440b-8734-54785ebe866e.pdf'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procedures\2d1e6430-6bec-4f76-8e0b-45c3fd7a4b8f.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\procedures\82049f06-1293-4fc8-9559-e4957b055181.pdf'))">
       <SourceType>Package</SourceType>

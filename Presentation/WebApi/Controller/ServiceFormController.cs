@@ -3,11 +3,14 @@ using Application.Features.Queries.ServiceFormQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ServiceFormController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -22,6 +25,11 @@ public class ServiceFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is creating a new service form", userId, userName);
+            
             await _mediator.Send(command);
             return Ok("Service form created successfully");
         }
@@ -37,6 +45,11 @@ public class ServiceFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all service forms", userId, userName);
+            
             var values = await _mediator.Send(new GetAllServiceFormQuery());
             return Ok(values);
         }
@@ -52,6 +65,11 @@ public class ServiceFormController : ControllerBase
     {
         try
         {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is deleting service form with ID: {ServiceFormId}", userId, userName, id);
+            
             await _mediator.Send(new DeleteServiceFormCommand { Id = id });
             return Ok("Service form deleted successfully");
         }

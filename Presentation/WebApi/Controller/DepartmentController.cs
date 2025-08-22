@@ -1,11 +1,15 @@
 using Application.Features.Queries.DepartmentQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class DepartmentController  : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -18,7 +22,20 @@ public class DepartmentController  : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var values = await _mediator.Send(new GetDepartmentQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all departments", userId, userName);
+            
+            var values = await _mediator.Send(new GetDepartmentQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllDepartments)");
+            return StatusCode(500, "Internal server error");
+        }
     }
 }

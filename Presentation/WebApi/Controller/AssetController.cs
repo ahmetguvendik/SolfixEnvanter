@@ -3,150 +3,344 @@ using Application.Features.Queries.AssetQueries;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Serilog;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class AssetController : ControllerBase
 {
     private readonly IMediator _mediator;
-    private readonly ILogger<AssetController> _logger;
 
-    public AssetController(IMediator mediator, ILogger<AssetController> logger)
+    public AssetController(IMediator mediator)
     {
         _mediator = mediator;
-        _logger = logger;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateAsset([FromBody] CreateAssetCommand asset)
     {
-        _logger.LogInformation("Creating asset: {AssetName}", asset.Name);
-        await _mediator.Send(asset);
-        _logger.LogInformation("Asset created successfully: {AssetName}", asset.Name);
-        return Ok("Eklendi");
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is creating a new asset: {AssetName}", userId, userName, asset.Name);
+            
+            await _mediator.Send(asset);
+            return Ok("Eklendi");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Post (CreateAsset)");
+            return StatusCode(500, "Internal server error");
+        }
     }
 
     [HttpGet("GetAllDesktop")]
     public async Task<IActionResult> GetAllDesktop()
     {
-        var values = await _mediator.Send(new GetAllDesktopQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all desktop assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllDesktopQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllDesktop)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllLaptop")]
     public async Task<IActionResult> GetAllLaptop()
     {
-        var values = await _mediator.Send(new GetAllLaptopQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all laptop assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllLaptopQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllLaptop)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllPrinter")]
     public async Task<IActionResult> GetAllPrinter()
     {
-        var values = await _mediator.Send(new GetAllPrinterQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all printer assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllPrinterQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllPrinter)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllMouse")]
     public async Task<IActionResult> GetAllMouse()
     {
-        var values = await _mediator.Send(new GetAllMouseQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all mouse assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllMouseQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllMouse)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllKeyboard")]
     public async Task<IActionResult> GetAllKeyboard()
     {
-        var values = await _mediator.Send(new GetAllKeyboardQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all keyboard assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllKeyboardQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllKeyboard)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllKSwitch")]
     public async Task<IActionResult> GetAllKSwitch()
     {
-        var values = await _mediator.Send(new GetAllSwitchQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all switch assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllSwitchQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllKSwitch)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllRouter")]
     public async Task<IActionResult> GetAllRouter()
     {
-        var values = await _mediator.Send(new GetAllRouterQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all router assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllRouterQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllRouter)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllAp")]
     public async Task<IActionResult> GetAllAp()
     {
-        var values = await _mediator.Send(new GetAllApQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all access point assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllApQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllAp)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllFirewall")]
     public async Task<IActionResult> GetAllFirewall()
     {
-        var values = await _mediator.Send(new GetAllFirewallQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all firewall assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllFirewallQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllFirewall)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllModem")]
     public async Task<IActionResult> GetAllModem()
     {
-        var values = await _mediator.Send(new GetAllModemQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all modem assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllModemQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllModem)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllWindowsKey")]
     public async Task<IActionResult> GetAllWindowsKey()
     {
-        var values = await _mediator.Send(new GetAllWindowsKeyQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all Windows key assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllWindowsKeyQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllWindowsKey)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllSystemSoftware")]
     public async Task<IActionResult> GetAllSystemSoftware()
     {
-        var values = await _mediator.Send(new GetAllSystemSoftwareQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all system software assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllSystemSoftwareQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllSystemSoftware)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllTV")]
     public async Task<IActionResult> GetAllTV()
     {
-        var values = await _mediator.Send(new GetAllTVQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all TV assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllTVQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllTV)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllAssignedAssetUser")]
     public async Task<IActionResult> GetAllAssignedAssetUser()
     {
-        var values = await _mediator.Send(new GetAllAssignedAssetUserQuery());
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all assigned asset users", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllAssignedAssetUserQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllAssignedAssetUser)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
     [HttpGet("GetAllAssets")]
     public async Task<IActionResult> GetAllAssets()
     {
-        _logger.LogInformation("Getting all assets");
-        var values = await _mediator.Send(new GetAllAssetsQuery());
-        _logger.LogInformation("Retrieved {Count} assets", values?.Count ?? 0);
-        return Ok(values);
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving all assets", userId, userName);
+            
+            var values = await _mediator.Send(new GetAllAssetsQuery());
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllAssets)");
+            return StatusCode(500, "Internal server error");
+        }
     }
     
-    [HttpGet("test-logging")]
-    public IActionResult TestLogging()
-    {
-        _logger.LogTrace("This is a trace message");
-        _logger.LogDebug("This is a debug message");
-        _logger.LogInformation("This is an information message");
-        _logger.LogWarning("This is a warning message");
-        _logger.LogError("This is an error message");
-        _logger.LogCritical("This is a critical message");
-        
-        return Ok("Logging test completed. Check console and database for logs.");
-    }
+   
     
 }
