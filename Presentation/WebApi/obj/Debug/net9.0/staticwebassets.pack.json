@@ -5,6 +5,26 @@
       "PackagePath": "staticwebassets/.gitkeep"
     },
     {
+      "Id": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/assignments/0ccdc628-6e97-41bc-a541-6d11374db4c4.pdf",
+      "PackagePath": "staticwebassets/uploads/assignments/0ccdc628-6e97-41bc-a541-6d11374db4c4.pdf"
+    },
+    {
+      "Id": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/5964497f-2eb9-41bb-b748-3798465e6b73.pdf",
+      "PackagePath": "staticwebassets/uploads/forms/5964497f-2eb9-41bb-b748-3798465e6b73.pdf"
+    },
+    {
+      "Id": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/8f799543-84b7-440b-8734-54785ebe866e.pdf",
+      "PackagePath": "staticwebassets/uploads/forms/8f799543-84b7-440b-8734-54785ebe866e.pdf"
+    },
+    {
+      "Id": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf",
+      "PackagePath": "staticwebassets/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf"
+    },
+    {
+      "Id": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf",
+      "PackagePath": "staticwebassets/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf"
+    },
+    {
       "Id": "obj/Debug/net9.0/staticwebassets/msbuild.WebApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

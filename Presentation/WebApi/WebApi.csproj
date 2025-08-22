@@ -33,4 +33,8 @@
       <ProjectReference Include="..\..\Infrastructure\Persistance\Persistance.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\.gitkeep" />
+    </ItemGroup>
+
 </Project>

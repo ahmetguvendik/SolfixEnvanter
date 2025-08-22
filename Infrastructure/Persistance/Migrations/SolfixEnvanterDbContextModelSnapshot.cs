@@ -281,6 +281,30 @@ namespace Persistence.Migrations
                     b.ToTable("AssetTypes");
                 });
 
+            modelBuilder.Entity("Domain.Entities.AssignmentForm", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AssignmentFormDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignmentFormFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignmentFormName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssignmentForms");
+                });
+
             modelBuilder.Entity("Domain.Entities.Department", b =>
                 {
                     b.Property<string>("Id")
@@ -307,6 +331,78 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("Domain.Entities.MaintanceForm", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FormDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MaintanceForms");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Procedure", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProcedureDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcedureFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProcedureName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Procedures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ServiceForm", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ServiceFormDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceFormFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceFormName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceForms");
                 });
 
             modelBuilder.Entity("DomainName", b =>
