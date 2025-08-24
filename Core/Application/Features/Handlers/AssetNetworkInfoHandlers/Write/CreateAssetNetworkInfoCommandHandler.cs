@@ -7,16 +7,16 @@ namespace Application.Features.Handlers.AssetNetworkInfoHandlers.Write;
 
 public class CreateAssetNetworkInfoCommandHandler : IRequestHandler<CreateAssetNetworkInfoCommand>
 {
-    private readonly IGenericRepository<AssetNetworkInfo>  _assetNetworkInfoRepository;
+    private readonly IGenericRepository<Domain.Entities.AssetNetworkInfo>  _assetNetworkInfoRepository;
 
-    public CreateAssetNetworkInfoCommandHandler(IGenericRepository<AssetNetworkInfo> assetNetworkInfoRepository)
+    public CreateAssetNetworkInfoCommandHandler(IGenericRepository<Domain.Entities.AssetNetworkInfo> assetNetworkInfoRepository)
     {
          _assetNetworkInfoRepository = assetNetworkInfoRepository;
     }
     
     public async Task Handle(CreateAssetNetworkInfoCommand request, CancellationToken cancellationToken)
     {
-        var assetNetworkInfo = new AssetNetworkInfo();
+        var assetNetworkInfo = new Domain.Entities.AssetNetworkInfo();
         assetNetworkInfo.Id = Guid.NewGuid().ToString();
         assetNetworkInfo.AssetId = request.AssetId;
         assetNetworkInfo.IPAddress  = request.IPAddress;

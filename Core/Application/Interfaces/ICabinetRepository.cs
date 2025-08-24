@@ -1,3 +1,5 @@
+using Domain.Entites;
+
 namespace Application.Interfaces;
 
 public interface ICabinetRepository

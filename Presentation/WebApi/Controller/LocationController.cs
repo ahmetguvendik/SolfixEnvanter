@@ -58,5 +58,25 @@ public class LocationController  : ControllerBase
             Log.Error(ex, "Error in Post (CreateLocation)");
             return StatusCode(500, "Internal server error");
         }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateLocation([FromBody] UpdateLocationCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is updating location with ID: {LocationId}", userId, userName, command.Id);
+            
+            await _mediator.Send(command);
+            return Ok("Güncellendi");   
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Put (UpdateLocation)");
+            return StatusCode(500, "Internal server error");
+        }
     }   
 }

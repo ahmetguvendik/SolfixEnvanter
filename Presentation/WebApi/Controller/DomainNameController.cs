@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Security.Claims;
+using Application.Features.Commands;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
@@ -56,6 +57,26 @@ public class DomainNameController  : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Get (GetAllDomainNames)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateDomainNameCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is updating domain name with ID: {DomainNameId}", userId, userName, command.Id);
+            
+            await _mediator.Send(command);
+            return Ok("Güncellendi");   
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Put (UpdateDomainName)");
             return StatusCode(500, "Internal server error");
         }
     }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Features.Queries.AssetQueries;
 
-public class GetAllSwitchQuery : IRequest<List<GetAllPrinterQueryResult>>
+public class GetAllSwitchQuery : IRequest<List<GetAllSwitchQueryResult>>
 {
     
 }

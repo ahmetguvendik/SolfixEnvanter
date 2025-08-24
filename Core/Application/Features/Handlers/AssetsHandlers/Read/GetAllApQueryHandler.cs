@@ -19,6 +19,7 @@ public class GetAllApQueryHandler  : IRequestHandler<GetAllApQuery, List<GetAllA
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("8", cancellationToken);
         return values.Select(x=> new  GetAllApQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

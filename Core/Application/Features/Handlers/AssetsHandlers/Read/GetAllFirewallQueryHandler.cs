@@ -19,6 +19,7 @@ public class GetAllFirewallQueryHandler  : IRequestHandler<GetAllFirewallQuery, 
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("9", cancellationToken);
         return values.Select(x=> new GetAllFirewallQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

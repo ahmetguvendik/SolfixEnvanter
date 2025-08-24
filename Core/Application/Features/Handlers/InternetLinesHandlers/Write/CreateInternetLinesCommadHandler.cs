@@ -1,5 +1,6 @@
 using Application.Features.Commands.InternetLinesCommands;
 using Application.Interfaces;
+using Domain.Entites;
 using MediatR;
 
 namespace Application.Features.Handlers.InternetLinesHandlers;

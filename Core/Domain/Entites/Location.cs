@@ -1,3 +1,5 @@
+using Domain.Entites;
+
 namespace Domain.Entities;
 
 public class Location : BaseEntity

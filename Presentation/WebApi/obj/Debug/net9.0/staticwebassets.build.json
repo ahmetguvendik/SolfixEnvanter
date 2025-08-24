@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GlfIjC92qIDAGpcsLAgu7xjWAqHHvh5sM8ccY65Mkc0=",
+  "Hash": "HCU4kVp573mIMLMfeH21xDjxTRQH35d/g/JSi63PoKA=",
   "Source": "WebApi",
   "BasePath": "_content/WebApi",
   "Mode": "Default",
@@ -36,6 +36,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/.gitkeep"
+    },
+    {
+      "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf",
+      "SourceId": "WebApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/",
+      "BasePath": "_content/WebApi",
+      "RelativePath": "uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jiuwv4daev",
+      "Integrity": "e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf"
+    },
+    {
+      "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf",
+      "SourceId": "WebApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/",
+      "BasePath": "_content/WebApi",
+      "RelativePath": "uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jiuwv4daev",
+      "Integrity": "e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf"
     },
     {
       "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/74107ce4-a422-4834-a5c0-ba1a5488ad1e.pdf",
@@ -80,12 +122,12 @@
       "OriginalItemSpec": "wwwroot/uploads/procedures/2d1e6430-6bec-4f76-8e0b-45c3fd7a4b8f.pdf"
     },
     {
-      "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf",
+      "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf",
       "SourceId": "WebApi",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/",
       "BasePath": "_content/WebApi",
-      "RelativePath": "uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181#[.{fingerprint}]?.pdf",
+      "RelativePath": "uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4#[.{fingerprint}]?.pdf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -94,32 +136,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "o80ht802uu",
-      "Integrity": "ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=",
+      "Fingerprint": "3mjkebwyog",
+      "Integrity": "tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf"
-    },
-    {
-      "Identity": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "uploads/services/60aefa18-fd49-4795-9238-1eb65656c835#[.{fingerprint}]?.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "o80ht802uu",
-      "Integrity": "ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf"
+      "OriginalItemSpec": "wwwroot/uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf"
     }
   ],
   "Endpoints": [
@@ -202,6 +223,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-suOz1kiDpgXF2XveHS5+PcJVbM8KhUN8rmnXxipmP4c="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.jiuwv4daev.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151050"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 24 Aug 2025 07:13:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jiuwv4daev"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/assignments/636b50b0-14c6-4583-93f2-346673d1a109.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151050"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 24 Aug 2025 07:13:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.jiuwv4daev.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151050"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 24 Aug 2025 09:36:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jiuwv4daev"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/forms/2d34da21-dbe5-489b-a44a-9eeda3ba7427.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "151050"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 24 Aug 2025 09:36:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e8E4F7SWTRQHSqDaqZTuOM9cQtWL6R3dDTsttH7f/BI="
         }
       ]
     },
@@ -370,8 +555,8 @@
       ]
     },
     {
-      "Route": "uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.o80ht802uu.pdf",
-      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf",
+      "Route": "uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.3mjkebwyog.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -380,7 +565,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4359"
+          "Value": "49112"
         },
         {
           "Name": "Content-Type",
@@ -388,11 +573,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=\""
+          "Value": "\"tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 22 Aug 2025 11:33:21 GMT"
+          "Value": "Fri, 22 Aug 2025 15:29:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -402,21 +587,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "o80ht802uu"
+          "Value": "3mjkebwyog"
         },
         {
           "Name": "label",
-          "Value": "uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf"
+          "Value": "uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs="
+          "Value": "sha256-tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw="
         }
       ]
     },
     {
-      "Route": "uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf",
-      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/procedures/82049f06-1293-4fc8-9559-e4957b055181.pdf",
+      "Route": "uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf",
+      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/dc0f4374-b789-4fd9-b798-fb3754cfcfd4.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -425,7 +610,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4359"
+          "Value": "49112"
         },
         {
           "Name": "Content-Type",
@@ -433,11 +618,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=\""
+          "Value": "\"tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 22 Aug 2025 11:33:21 GMT"
+          "Value": "Fri, 22 Aug 2025 15:29:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -447,89 +632,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.o80ht802uu.pdf",
-      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4359"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/pdf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 22 Aug 2025 12:42:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "o80ht802uu"
-        },
-        {
-          "Name": "label",
-          "Value": "uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf",
-      "AssetFile": "/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Presentation/WebApi/wwwroot/uploads/services/60aefa18-fd49-4795-9238-1eb65656c835.pdf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4359"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/pdf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 22 Aug 2025 12:42:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ePgayrUvGSRgwuyxlG2Ns7SEUb53VdVnTUaYiRj/ERs="
+          "Value": "sha256-tQXHiOLYHZvYICC2yOddoNwwQbeWIjbUk0v5D/9Kxyw="
         }
       ]
     }

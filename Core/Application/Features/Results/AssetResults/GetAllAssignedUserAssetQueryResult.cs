@@ -1,9 +1,10 @@
 using Application.Enums;
 
-namespace Application.Features.Results.AssignedUserResults;
+namespace Application.Features.Results.AssetResults;
 
-public class GetAllAssignedUserAseetQueryResult
+public class GetAllAssignedUserAssetQueryResult
 {
+    public string Id { get; set; }
     public string Name { get; set; }
     public string SerialNumber { get; set; }
     public string Brand { get; set; }

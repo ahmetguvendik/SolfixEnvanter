@@ -1,5 +1,7 @@
 using Domain.Entities;
 
+namespace Domain.Entites;
+
 public class MaintenanceRecord : BaseEntity
 {
     public string MaintenanceTypeId { get; set; }

@@ -19,6 +19,7 @@ public class GetAllSystemSoftwareQueryHandler  : IRequestHandler<GetAllSystemSof
         var values = await _repository.GetAllByAssetTypeIdAsync("12", cancellationToken);
         return values.Select(x=> new GetAllSystemSoftwareQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

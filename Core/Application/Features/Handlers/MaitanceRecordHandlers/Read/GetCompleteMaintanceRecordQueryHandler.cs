@@ -1,6 +1,7 @@
 using Application.Features.Queries.MaintenanceRecordQueries;
 using Application.Features.Results.MaintenanceRecordResults;
 using Application.Interfaces;
+using Domain.Entites;
 using MediatR;
 
 namespace Application.Features.Handlers.MaintenanceRecordHandlers.Read;

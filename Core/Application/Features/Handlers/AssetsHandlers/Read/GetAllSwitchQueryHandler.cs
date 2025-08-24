@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Handlers.AssetsHandlers.Read;
 
-public class GetAllSwitchQueryHandler  : IRequestHandler<GetAllSwitchQuery, List<GetAllPrinterQueryResult>>
+public class GetAllSwitchQueryHandler  : IRequestHandler<GetAllSwitchQuery, List<GetAllSwitchQueryResult>>
 {
     private readonly IAssetRepository _assetRepository;
 
@@ -13,11 +13,12 @@ public class GetAllSwitchQueryHandler  : IRequestHandler<GetAllSwitchQuery, List
     {
         _assetRepository = assetRepository;
     }
-    public async Task<List<GetAllPrinterQueryResult>> Handle(GetAllSwitchQuery request, CancellationToken cancellationToken)
+    public async Task<List<GetAllSwitchQueryResult>> Handle(GetAllSwitchQuery request, CancellationToken cancellationToken)
     {
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("6", cancellationToken);
-        return values.Select(x=> new GetAllPrinterQueryResult()
+        return values.Select(x=> new GetAllSwitchQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

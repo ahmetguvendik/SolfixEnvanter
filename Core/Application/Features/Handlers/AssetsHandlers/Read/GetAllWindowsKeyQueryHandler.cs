@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Handlers.AssetsHandlers.Read;
 
-public class GetAllWindowsKeyQueryHandler  : IRequestHandler<GetAllWindowsKeyQuery, IList<GetAllModemQueryResult>>
+public class GetAllWindowsKeyQueryHandler  : IRequestHandler<GetAllWindowsKeyQuery, IList<GetAllWindosKeyQueryResult>>
 {
     private readonly IAssetRepository  _assetRepository;
 
@@ -14,11 +14,12 @@ public class GetAllWindowsKeyQueryHandler  : IRequestHandler<GetAllWindowsKeyQue
        _assetRepository = assetRepository;  
     }
     
-    public async Task<IList<GetAllModemQueryResult>> Handle(GetAllWindowsKeyQuery request, CancellationToken cancellationToken)
+    public async Task<IList<GetAllWindosKeyQueryResult>> Handle(GetAllWindowsKeyQuery request, CancellationToken cancellationToken)
     {
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("11", cancellationToken);
-        return values.Select(x=> new GetAllModemQueryResult()
+        return values.Select(x=> new GetAllWindosKeyQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

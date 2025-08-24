@@ -11,7 +11,6 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class AssetController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -340,7 +339,26 @@ public class AssetController : ControllerBase
             return StatusCode(500, "Internal server error");
         }
     }
-    
-   
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateAsset([FromBody] UpdateAssetCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is updating asset with ID: {AssetId}, Status: {Status}", userId, userName, command.Id, command.Status);
+            Console.WriteLine($"UpdateAsset - ID: {command.Id}, Status: {command.Status}, HasValue: {command.Status.HasValue}");
+            
+            await _mediator.Send(command);
+            return Ok("Güncellendi");   
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Put (UpdateAsset)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
     
 }

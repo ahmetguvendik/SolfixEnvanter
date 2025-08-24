@@ -1,5 +1,7 @@
 using Domain.Entities;
 
+namespace Domain.Entites;
+
 public class SslCertificate : BaseEntity
 {
     public string CommonName { get; set; } // Alan adı veya wildcard (*.example.com)

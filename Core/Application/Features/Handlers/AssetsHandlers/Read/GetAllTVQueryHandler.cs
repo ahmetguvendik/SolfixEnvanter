@@ -19,6 +19,7 @@ public class GetAllTVQueryHandler  : IRequestHandler<GetAllTVQuery, List<GetAllT
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("13", cancellationToken);
         return values.Select(x=> new GetAllTVQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

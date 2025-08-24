@@ -18,6 +18,7 @@ public class GetAllMouseQueryHandler : IRequestHandler<GetAllMouseQuery, List<Ge
         var results = await _assetRepository.GetAllByAssetTypeIdAsync("4", cancellationToken);
         return results.Select(x => new GetAllMouseQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

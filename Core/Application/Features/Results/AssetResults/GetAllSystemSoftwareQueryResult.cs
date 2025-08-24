@@ -4,6 +4,7 @@ namespace Application.Features.Results.AssetResults;
 
 public class GetAllSystemSoftwareQueryResult
 {
+    public string Id { get; set; }
     public string Name { get; set; }
     public string SerialNumber { get; set; }
     public string Brand { get; set; }

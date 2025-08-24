@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Security.Claims;
+using Application.Features.Commands;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
@@ -56,6 +57,26 @@ public class SslCertificateController : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Get (GetAllSslCertificates)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateSslCertificateCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is updating SSL certificate with ID: {CertificateId}", userId, userName, command.Id);
+            
+            await _mediator.Send(command);
+            return Ok("Güncellendi");   
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Put (UpdateSslCertificate)");
             return StatusCode(500, "Internal server error");
         }
     }

@@ -1,5 +1,6 @@
     using Application.Features.Commands.MaintenanceTypeCommands;
     using Application.Interfaces;
+    using Domain.Entites;
     using MediatR;
 
     namespace Application.Features.Handlers.MaintenanceTypeHandlers.Write;

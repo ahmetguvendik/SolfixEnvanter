@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Features.Queries.AssetQueries;
 
-public class GetAllWindowsKeyQuery : IRequest<IList<GetAllModemQueryResult>>
+public class GetAllWindowsKeyQuery : IRequest<IList<GetAllWindosKeyQueryResult>>
 {
     
 }

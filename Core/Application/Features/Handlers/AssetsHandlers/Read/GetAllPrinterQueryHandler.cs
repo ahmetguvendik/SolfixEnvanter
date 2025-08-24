@@ -20,6 +20,7 @@ public class GetAllPrinterQueryHandler : IRequestHandler<GetAllPrinterQuery, Lis
         var results = await _assetRepository.GetAllByAssetTypeIdAsync("3", cancellationToken);
         return results.Select(x => new GetAllPrinterQueryResult
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

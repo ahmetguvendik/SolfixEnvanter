@@ -6,16 +6,16 @@ namespace Application.Features.Handlers.CabinetHandlers.Write;
 
 public class CreateCabinetCommandHandler : IRequestHandler<CreateCabinetCommand>
 {
-    private readonly IGenericRepository<Cabinet> _cabinetRepository;
+    private readonly IGenericRepository<Domain.Entites.Cabinet> _cabinetRepository;
 
-    public CreateCabinetCommandHandler(IGenericRepository<Cabinet> cabinetRepository)
+    public CreateCabinetCommandHandler(IGenericRepository<Domain.Entites.Cabinet> cabinetRepository)
     {
         _cabinetRepository = cabinetRepository;
     }
     
     public async Task Handle(CreateCabinetCommand request, CancellationToken cancellationToken)
     {
-        var cabinet = new Cabinet();
+        var cabinet = new Domain.Entites.Cabinet();
         cabinet.Id = Guid.NewGuid().ToString();    
         cabinet.Name = request.Name;
         cabinet.Code = request.Code;

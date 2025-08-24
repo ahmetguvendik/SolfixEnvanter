@@ -1,5 +1,7 @@
 using Domain.Entities;
 
+namespace Domain.Entites;
+
 public class Cabinet : BaseEntity
 {
     public string Name { get; set; } // Rack-01

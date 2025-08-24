@@ -20,6 +20,7 @@ public class GetAllDesktopQueryHandler : IRequestHandler<GetAllDesktopQuery, Lis
         var assets = await _assetRepository.GetAllByAssetTypeIdAsync("1", cancellationToken);  
         return assets.Select(x => new GetAllDesktopQueryResult
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

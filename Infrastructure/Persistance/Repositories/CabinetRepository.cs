@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Domain.Entites;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 

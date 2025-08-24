@@ -1,5 +1,7 @@
 using Domain.Entities;
 
+namespace Domain.Entites;
+
 public class MaintenanceType : BaseEntity
 {
     public string Name { get; set; }               // Örn: Haftalık Bakım Formu

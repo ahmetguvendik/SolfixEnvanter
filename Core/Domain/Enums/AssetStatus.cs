@@ -4,6 +4,6 @@ public enum AssetStatus
 {
     Aktif,
     Arizali,
-    Iade,
+    Depo,
     Hurda   
 }

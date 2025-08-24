@@ -1,10 +1,11 @@
 using Application.Features.Commands.AssetNetworkInfoCommands;
 using Application.Features.Queries.AssetNetworkInfoQueries;
-using Domain.Entities;
+
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Security.Claims;
+using Application.Features.Commands;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controller;
@@ -57,6 +58,26 @@ public class AssetNetworkInfoController : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Get (GetAllAssetNetworkInfos)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateAssetNetworkInfo([FromBody] UpdateAssetNetworkInfoCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is updating asset network info with ID: {NetworkInfoId}", userId, userName, command.Id);
+            
+            await _mediator.Send(command);
+            return Ok("Güncellendi");   
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Put (UpdateAssetNetworkInfo)");
             return StatusCode(500, "Internal server error");
         }
     }

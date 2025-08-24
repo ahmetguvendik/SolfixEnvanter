@@ -19,6 +19,7 @@ public class GetAllModemQueryHandler  : IRequestHandler<GetAllModemQuery, List<G
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("10", cancellationToken);
         return values.Select(x=> new GetAllModemQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

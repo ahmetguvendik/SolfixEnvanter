@@ -1,6 +1,7 @@
 using Application.Features.Queries.DomainNameQueries;
 using Application.Features.Results.DomainNameResults;
 using Application.Interfaces;
+using Domain.Entites;
 using MediatR;
 
 namespace Application.Features.Handlers.DomainNameHandlers.Read;

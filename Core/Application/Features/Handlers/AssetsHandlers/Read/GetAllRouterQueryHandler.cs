@@ -18,6 +18,7 @@ public class GetAllRouterQueryHandler : IRequestHandler<GetAllRouterQuery, List<
         var values = await _assetRepository.GetAllByAssetTypeIdAsync("7", cancellationToken);
         return values.Select(x=> new GetAllRouterQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

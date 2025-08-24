@@ -19,6 +19,7 @@ public class GetAllKeyboardQueryHandler : IRequestHandler<GetAllKeyboardQuery, L
         var results = await _assetRepository.GetAllByAssetTypeIdAsync("5", cancellationToken);
         return results.Select(x => new GetAllKeyboardQueryResult()
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,

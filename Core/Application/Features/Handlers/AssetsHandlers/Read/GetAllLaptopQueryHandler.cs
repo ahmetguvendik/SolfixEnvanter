@@ -20,6 +20,7 @@ public class GetAllLaptopQueryHandler : IRequestHandler<GetAllLaptopQuery, List<
         var assets = await _assetRepository.GetAllByAssetTypeIdAsync("2", cancellationToken);  
         return assets.Select(x => new GetAllLaptopQueryResult
         {
+            Id = x.Id,
             Name = x.Name,
             SerialNumber = x.SerialNumber,
             Brand = x.Brand,
