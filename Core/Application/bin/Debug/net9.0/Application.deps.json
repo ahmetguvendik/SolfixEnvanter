@@ -13,7 +13,8 @@
           "FluentValidation.DependencyInjectionExtensions": "11.9.0",
           "MediatR": "13.0.0",
           "Microsoft.AspNetCore.Hosting": "2.3.0",
-          "Microsoft.EntityFrameworkCore": "9.0.7"
+          "Microsoft.EntityFrameworkCore": "9.0.7",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "9.0.0.0"
         },
         "runtime": {
           "Application.dll": {}
@@ -677,6 +678,30 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Microsoft.AspNetCore.Mvc.Abstractions/9.0.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Mvc.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.24.52903"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Routing.Abstractions/9.0.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Routing.Abstractions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.24.52903"
+          }
+        }
+      },
+      "Microsoft.Extensions.Features/9.0.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.Features.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.24.52903"
+          }
+        }
       }
     }
   },
@@ -1115,6 +1140,21 @@
     },
     "Domain/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Mvc.Abstractions/9.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Routing.Abstractions/9.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Features/9.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

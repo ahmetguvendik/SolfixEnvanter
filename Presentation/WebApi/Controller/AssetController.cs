@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableRateLimiting("AssetOperations")]
 public class AssetController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -19,7 +21,7 @@ public class AssetController : ControllerBase
     {
         _mediator = mediator;
     }
-
+    
     [HttpPost]
     public async Task<IActionResult> CreateAsset([FromBody] CreateAssetCommand asset)
     {
@@ -36,6 +38,26 @@ public class AssetController : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Post (CreateAsset)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+    
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(string id)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving asset by id", userId, userName);
+            
+            var values = await _mediator.Send(new GetAssetByIdQuery(id));
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAllDesktop)");
             return StatusCode(500, "Internal server error");
         }
     }

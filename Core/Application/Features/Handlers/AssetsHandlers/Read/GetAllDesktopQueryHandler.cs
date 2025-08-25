@@ -26,14 +26,14 @@ public class GetAllDesktopQueryHandler : IRequestHandler<GetAllDesktopQuery, Lis
             Brand = x.Brand,
             Model = x.Model,
             AssetTag = x.AssetTag,
-            AssetTypeName = x.AssetType.Name,
-            LocationName = x.Location.Name,
+            AssetTypeName = x.AssetType?.Name ?? "N/A",
+            LocationName = x.Location?.Name ?? "N/A",
             AssignedToUserName = x.AssignedToUser?.FullName,
             PurchaseDate = x.PurchaseDate,
             WarrantyExpiryDate = x.WarrantyExpiryDate,
             Status = x.Status,
             Description = x.Description,
-            DepartmentName = x.Department.Name,
+            DepartmentName = x.Department?.Name ?? "N/A",
         }).ToList();
     }
 }

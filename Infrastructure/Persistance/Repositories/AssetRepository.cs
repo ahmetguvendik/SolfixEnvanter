@@ -13,10 +13,7 @@ public class AssetRepository  : IAssetRepository
     {
          _dbContext = dbContext;
     }
-
-
-
-
+    
     public async Task<List<Asset>> GetAllByAssetTypeIdAsync(string assetTypeId, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Assets
@@ -26,6 +23,7 @@ public class AssetRepository  : IAssetRepository
             .Include(a => a.Department)
             .Include(a => a.AssignedToUser)
             .Include(a => a.AssetType)
+            .Include(a => a.Cabinet)
             .Where(a => a.AssetTypeId == assetTypeId)
             .ToListAsync(cancellationToken);
     }
@@ -39,7 +37,20 @@ public class AssetRepository  : IAssetRepository
             .Include(a => a.Department)
             .Include(a => a.AssignedToUser)
             .Include(a => a.AssetType)
+            .Include(a => a.Cabinet)
             .Where(a => a.AssignedToUserId != null)
             .ToListAsync(cancellationToken);
+    }
+
+    public async Task<Asset> GetByIdAsync(string id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Assets
+            .AsNoTracking()
+            .Include(a => a.Location)
+            .Include(a => a.Department)
+            .Include(a => a.AssignedToUser)
+            .Include(a => a.AssetType)
+            .Include(a => a.Cabinet)
+            .Where(a => a.Id == id).FirstOrDefaultAsync(cancellationToken);
     }
 }

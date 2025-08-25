@@ -14,3 +14,6 @@
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/bin/Debug/net9.0/Domain.pdb
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/obj/Debug/net9.0/Application.csproj.AssemblyReference.cache
 /Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/obj/Debug/net9.0/Applicat.44B5EDA2.Up2Date
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Abstractions.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/bin/Debug/net9.0/Microsoft.AspNetCore.Routing.Abstractions.dll
+/Users/ahmetguvendik/Desktop/untitled folder/Project/SolfixEnvanter/Core/Application/bin/Debug/net9.0/Microsoft.Extensions.Features.dll

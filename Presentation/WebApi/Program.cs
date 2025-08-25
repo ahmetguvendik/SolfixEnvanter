@@ -7,6 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Context;
 using Serilog.Sinks.MSSqlServer;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+using Application.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +46,47 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService(builder.Configuration);
+
+// Rate Limiting Configuration
+var rateLimitingSettings = builder.Configuration.GetSection("RateLimiting").Get<RateLimitingSettings>() ?? new RateLimitingSettings();
+
+builder.Services.AddRateLimiter(options =>
+{
+    // IP bazlı rate limiting
+    options.AddFixedWindowLimiter("General", limiterOptions =>
+    {
+        limiterOptions.PermitLimit = rateLimitingSettings.General.PermitLimit;
+        limiterOptions.Window = rateLimitingSettings.General.Window;
+        limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        limiterOptions.QueueLimit = rateLimitingSettings.General.QueueLimit;
+    });
+
+    // Authentication için daha sıkı rate limiting
+    options.AddFixedWindowLimiter("Authentication", limiterOptions =>
+    {
+        limiterOptions.PermitLimit = rateLimitingSettings.Authentication.PermitLimit;
+        limiterOptions.Window = rateLimitingSettings.Authentication.Window;
+        limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        limiterOptions.QueueLimit = rateLimitingSettings.Authentication.QueueLimit;
+    });
+
+    // Asset operasyonları için özel rate limiting
+    options.AddFixedWindowLimiter("AssetOperations", limiterOptions =>
+    {
+        limiterOptions.PermitLimit = rateLimitingSettings.AssetOperations.PermitLimit;
+        limiterOptions.Window = rateLimitingSettings.AssetOperations.Window;
+        limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        limiterOptions.QueueLimit = rateLimitingSettings.AssetOperations.QueueLimit;
+    });
+
+    // Rate limit aşıldığında döndürülecek response
+    options.RejectionStatusCode = 429; // Too Many Requests
+    options.OnRejected = async (context, token) =>
+    {
+        context.HttpContext.Response.StatusCode = 429;
+        await context.HttpContext.Response.WriteAsync("Rate limit exceeded. Please try again later.", token);
+    };
+});
 var jwtSettings = builder.Configuration.GetSection("Jwt").Get<Application.Models.JwtSettings>() ?? new Application.Models.JwtSettings();
 builder.Services.AddAuthentication(options =>
     {
@@ -92,6 +136,8 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("AllowAll");
 
+// Rate Limiting Middleware
+app.UseRateLimiter();
 
 app.UseHttpsRedirection();
 

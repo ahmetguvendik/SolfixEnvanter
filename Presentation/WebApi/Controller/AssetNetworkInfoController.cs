@@ -7,12 +7,14 @@ using Serilog;
 using System.Security.Claims;
 using Application.Features.Commands;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
+[EnableRateLimiting("AssetOperations")]
 public class AssetNetworkInfoController : ControllerBase
 {
     private readonly IMediator  _mediator;

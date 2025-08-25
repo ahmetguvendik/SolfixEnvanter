@@ -10,12 +10,14 @@ using Serilog;
 using System.Security.Claims;
 using Application.Features.Commands;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
+[EnableRateLimiting("General")]
 public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -52,6 +54,7 @@ public class UserController : ControllerBase
    
     [HttpPost("jwt-login")]
     [AllowAnonymous]
+    [EnableRateLimiting("Authentication")]
     public async Task<IActionResult> JwtLogin([FromBody] LoginUserCommand command)
     {
         Log.Information("Login attempt for user: {Username}", command?.Username ?? "null");
