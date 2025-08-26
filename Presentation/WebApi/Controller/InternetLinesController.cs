@@ -61,6 +61,27 @@ public class InternetLinesController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetInternetLineById(string id)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving internet line with ID: {InternetLineId}", userId, userName, id);
+            
+            var query = new GetInternetLineByIdQuery { Id = id };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetInternetLineById)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] UpdateInternetLinesCommand command)
     {

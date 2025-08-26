@@ -19,4 +19,12 @@ public class InternetLinesRepository : IInternetLinesRepository
         var values = await _context.InternetLines.Include(x => x.Location).ToListAsync();
         return values;
     }
+
+    public async Task<InternetLine> GetInternetLineByIdWithLocation(string id)
+    {
+        var internetLine = await _context.InternetLines
+            .Include(x => x.Location)
+            .FirstOrDefaultAsync(x => x.Id == id);
+        return internetLine;
+    }
 }
