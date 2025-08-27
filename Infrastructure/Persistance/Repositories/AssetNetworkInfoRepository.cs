@@ -19,4 +19,10 @@ public class AssetNetworkInfoRepository : IAssetNetworkInfoRepository
         var values = await _dbContext.AssetNetworkInfos.Include(x => x.Asset).ToListAsync();
         return values;
     }
+    
+    public async Task<AssetNetworkInfo> GetAssetNetworkInfoWithAssetById(string id)
+    {
+        var assetNetworkInfo = await _dbContext.AssetNetworkInfos.Include(x => x.Asset).FirstOrDefaultAsync(x => x.Id == id);
+        return assetNetworkInfo;
+    }
 }

@@ -23,6 +23,7 @@ public class GetAllAssetNetworkInfoQueryHandler : IRequestHandler<GetAllAssetNet
             AssetName = x.Asset.Name,
             IPAddress = x.IPAddress,
             MacAddress = x.MacAddress,
+            Status = x.Status,
         }).ToList();
     }
 }

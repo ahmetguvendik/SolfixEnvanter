@@ -13,7 +13,6 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 [EnableRateLimiting("AssetOperations")]
 public class AssetNetworkInfoController : ControllerBase
 {
@@ -60,6 +59,27 @@ public class AssetNetworkInfoController : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Get (GetAllAssetNetworkInfos)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetAssetNetworkInfoById(string id)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving asset network info with ID: {NetworkInfoId}", userId, userName, id);
+            
+            var query = new GetAssetNetworkInfoByIdQuery { Id = id };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAssetNetworkInfoById)");
             return StatusCode(500, "Internal server error");
         }
     }

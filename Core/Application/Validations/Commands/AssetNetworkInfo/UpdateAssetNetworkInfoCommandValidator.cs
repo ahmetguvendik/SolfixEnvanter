@@ -23,5 +23,8 @@ public sealed class UpdateAssetNetworkInfoCommandValidator : AbstractValidator<U
 			.NotEmpty().WithMessage("MAC adresi zorunludur.")
 			.Matches(@"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$")
 			.WithMessage("Geçerli bir MAC adresi giriniz (örn: 00:1B:44:11:3A:B7).");
+
+		RuleFor(x => x.Status)
+			.IsInEnum().WithMessage("Geçerli bir durum seçiniz.");
 	}
 }

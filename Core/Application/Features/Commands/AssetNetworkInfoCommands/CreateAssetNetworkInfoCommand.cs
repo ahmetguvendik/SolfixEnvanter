@@ -1,3 +1,4 @@
+using Application.Enums;
 using Domain.Entities;
 using MediatR;
 
@@ -8,4 +9,6 @@ public class CreateAssetNetworkInfoCommand : IRequest
     public string AssetId { get; set; }
     public string IPAddress { get; set; }
     public string MacAddress { get; set; }
+    public AssetNetworkInfoStatues Status { get; set; } 
+
 }

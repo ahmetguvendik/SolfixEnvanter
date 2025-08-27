@@ -23,6 +23,7 @@ public class UpdateAssetNetworkInfoCommandHandler : IRequestHandler<UpdateAssetN
         networkInfo.AssetId = request.AssetId;
         networkInfo.IPAddress = request.IPAddress;
         networkInfo.MacAddress = request.MacAddress;
+        networkInfo.Status = request.Status;
         
         await _repository.UpdateAsync(networkInfo, cancellationToken);
         await _repository.SaveChangesAsync(cancellationToken);

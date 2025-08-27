@@ -38,17 +38,13 @@ public sealed class UpdateAssetCommandValidator : AbstractValidator<UpdateAssetC
 
 		RuleFor(x => x.DepartmentId)
 			.NotEmpty().WithMessage("Departman zorunludur.");
-
-		RuleFor(x => x.PurchaseDate)
-			.NotEmpty().WithMessage("Satın alma tarihi zorunludur.")
-			.LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Satın alma tarihi gelecekte olamaz.");
-
-		RuleFor(x => x.WarrantyExpiryDate)
-			.GreaterThan(DateTime.UtcNow).When(x => x.WarrantyExpiryDate.HasValue)
-			.WithMessage("Garanti bitiş tarihi gelecekte olmalıdır.");
-
+		
 		RuleFor(x => x.Description)
 			.MaximumLength(500).When(x => !string.IsNullOrEmpty(x.Description))
 			.WithMessage("Açıklama 500 karakterden uzun olamaz.");
+
+		RuleFor(x => x.CabinetId)
+			.MaximumLength(50).When(x => !string.IsNullOrEmpty(x.CabinetId))
+			.WithMessage("Cabinet ID 50 karakterden uzun olamaz.");
 	}
 }

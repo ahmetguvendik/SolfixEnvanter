@@ -21,6 +21,7 @@ public class CreateAssetNetworkInfoCommandHandler : IRequestHandler<CreateAssetN
         assetNetworkInfo.AssetId = request.AssetId;
         assetNetworkInfo.IPAddress  = request.IPAddress;
         assetNetworkInfo.MacAddress = request.MacAddress;
+        assetNetworkInfo.Status = request.Status;
         await _assetNetworkInfoRepository.CreateAsync(assetNetworkInfo, cancellationToken);
         await _assetNetworkInfoRepository.SaveChangesAsync(cancellationToken);
     }

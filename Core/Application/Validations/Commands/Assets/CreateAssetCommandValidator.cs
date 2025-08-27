@@ -45,6 +45,10 @@ public sealed class CreateAssetCommandValidator : AbstractValidator<CreateAssetC
 
 		RuleFor(x => x.Description)
 			.MaximumLength(500).WithMessage("Açıklama en fazla 500 karakter olabilir.");
+
+		RuleFor(x => x.CabinetId)
+			.MaximumLength(50).When(x => !string.IsNullOrEmpty(x.CabinetId))
+			.WithMessage("Cabinet ID en fazla 50 karakter olabilir.");
 	}
 }
 

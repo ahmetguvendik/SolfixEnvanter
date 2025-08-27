@@ -382,5 +382,25 @@ public class AssetController : ControllerBase
             return StatusCode(500, "Internal server error");
         }
     }
+
+    [HttpPatch("assign")]
+    public async Task<IActionResult> AssignAssetToUser([FromBody] AssignAssetToUserCommand command)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is assigning asset {AssetId} to user {TargetUserId}", userId, userName, command.AssetId, command.UserId ?? "null");
+            
+            await _mediator.Send(command);
+            return Ok("Asset zimmetlendi");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Patch (AssignAssetToUser)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
     
 }

@@ -16,7 +16,6 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 [EnableRateLimiting("General")]
 public class UserController : ControllerBase
 {

@@ -1,6 +1,8 @@
 namespace Application.Enums;
 
-public class AssetNetworkInfoStatues
+
+public enum AssetNetworkInfoStatues
 {
-    
+    Aktif,
+    Pasif
 }

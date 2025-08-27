@@ -12,7 +12,6 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class CabinetController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -38,6 +37,27 @@ public class CabinetController : ControllerBase
         catch (Exception ex)
         {
             Log.Error(ex, "Error in Get (GetAllCabinets)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetCabinetById(string id)
+    {
+        try
+        {
+            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var userName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving cabinet with ID: {CabinetId}", userId, userName, id);
+            
+            var query = new GetCabinetByIdQuery { Id = id };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetCabinetById)");
             return StatusCode(500, "Internal server error");
         }
     }

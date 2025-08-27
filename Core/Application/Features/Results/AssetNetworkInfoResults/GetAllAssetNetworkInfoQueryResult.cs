@@ -1,3 +1,5 @@
+using Application.Enums;
+
 namespace Application.Features.Results.AssetNetworkInfoResults;
 
 public class GetAllAssetNetworkInfoQueryResult
@@ -6,4 +8,6 @@ public class GetAllAssetNetworkInfoQueryResult
     public string AssetName { get; set; }
     public string IPAddress { get; set; }
     public string MacAddress { get; set; }
+    public AssetNetworkInfoStatues Status { get; set; } 
+
 }

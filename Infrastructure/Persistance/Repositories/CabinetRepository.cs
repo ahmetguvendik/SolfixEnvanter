@@ -25,4 +25,14 @@ public class CabinetRepository  : ICabinetRepository
             .ToListAsync(cancellationToken);
         return values;
     }
+    
+    public async Task<Cabinet> GetByIdWithDetailsAsync(string id, CancellationToken cancellationToken = default)
+    {
+        var cabinet = await _context.Cabinets
+            .AsNoTracking()
+            .AsSplitQuery()
+            .Include(x => x.Location)
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        return cabinet;
+    }
 }

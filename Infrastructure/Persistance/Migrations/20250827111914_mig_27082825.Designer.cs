@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
 #nullable disable
 
-namespace Persistence.Migrations
+namespace Persistance.Migrations
 {
     [DbContext(typeof(SolfixEnvanterDbContext))]
-    partial class SolfixEnvanterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250827111914_mig_27082825")]
+    partial class mig_27082825
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

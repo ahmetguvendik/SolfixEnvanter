@@ -1,3 +1,5 @@
+using Application.Enums;
+
 namespace Domain.Entities;
 
 public class AssetNetworkInfo : BaseEntity
@@ -6,4 +8,6 @@ public class AssetNetworkInfo : BaseEntity
     public Asset Asset { get; set; }
     public string IPAddress { get; set; }
     public string MacAddress { get; set; }
+    public AssetNetworkInfoStatues Status { get; set; } 
+
 }
