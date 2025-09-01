@@ -31,6 +31,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
     {
         try
@@ -92,6 +93,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetUsers()
     {
         try
@@ -112,30 +114,12 @@ public class UserController : ControllerBase
     }
     
     [HttpGet("GetUserById")]
+    [Authorize]
     public async Task<IActionResult> GetUserById(string id)
     {
         var users = await _mediator.Send(new GetUserByIdQuery(id));
         return Ok(users);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
-    {
-        try
-        {
-            var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
-            var userName = User?.Identity?.Name ?? "Anonymous";
-            
-            Log.Information("User {UserId} ({UserName}) is updating user with ID: {UpdateUserId}", userId, userName, command.Id);
-            
-            await _mediator.Send(command);
-            return Ok("Güncellendi");   
-        }
-        catch (Exception ex)
-        {
-            Log.Error(ex, "Error in Put (UpdateUser)");
-            return StatusCode(500, "Internal server error");
-        }
-    }
     
 }

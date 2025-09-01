@@ -23,6 +23,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateAsset([FromBody] CreateAssetCommand asset)
     {
         try
@@ -43,6 +44,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetById(string id)
     {
         try
@@ -63,6 +65,7 @@ public class AssetController : ControllerBase
     }
 
     [HttpGet("GetAllDesktop")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllDesktop()
     {
         try
@@ -83,6 +86,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllLaptop")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllLaptop()
     {
         try
@@ -103,6 +107,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllPrinter")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllPrinter()
     {
         try
@@ -123,6 +128,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllMouse")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllMouse()
     {
         try
@@ -143,6 +149,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllKeyboard")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllKeyboard()
     {
         try
@@ -163,6 +170,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllKSwitch")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllKSwitch()
     {
         try
@@ -183,6 +191,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllRouter")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllRouter()
     {
         try
@@ -203,6 +212,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllAp")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllAp()
     {
         try
@@ -223,6 +233,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllFirewall")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllFirewall()
     {
         try
@@ -243,6 +254,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllModem")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllModem()
     {
         try
@@ -263,6 +275,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllWindowsKey")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllWindowsKey()
     {
         try
@@ -283,6 +296,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllSystemSoftware")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllSystemSoftware()
     {
         try
@@ -303,6 +317,7 @@ public class AssetController : ControllerBase
     }
     
     [HttpGet("GetAllTV")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllTV()
     {
         try
@@ -341,8 +356,29 @@ public class AssetController : ControllerBase
             return StatusCode(500, "Internal server error");
         }
     }
+
+    [HttpGet("GetAssignAssetByUserId/{userId}")]
+    public async Task<IActionResult> GetAssignAssetByUserId(string userId)
+    {
+        try
+        {
+            var currentUserId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "Anonymous";
+            var currentUserName = User?.Identity?.Name ?? "Anonymous";
+            
+            Log.Information("User {UserId} ({UserName}) is retrieving assets assigned to user: {TargetUserId}", currentUserId, currentUserName, userId);
+            
+            var values = await _mediator.Send(new GetAssignAssetByUserIdQuery { UserId = userId });
+            return Ok(values);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error in Get (GetAssignAssetByUserId)");
+            return StatusCode(500, "Internal server error");
+        }
+    }
     
     [HttpGet("GetAllAssets")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllAssets()
     {
         try
@@ -363,6 +399,7 @@ public class AssetController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateAsset([FromBody] UpdateAssetCommand command)
     {
         try
@@ -384,6 +421,7 @@ public class AssetController : ControllerBase
     }
 
     [HttpPatch("assign")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AssignAssetToUser([FromBody] AssignAssetToUserCommand command)
     {
         try

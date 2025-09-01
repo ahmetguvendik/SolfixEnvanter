@@ -12,6 +12,7 @@ namespace WebApi.Controller;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
 public class CabinetController : ControllerBase
 {
     private readonly IMediator _mediator;

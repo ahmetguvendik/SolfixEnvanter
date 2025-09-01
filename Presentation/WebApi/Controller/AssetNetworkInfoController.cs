@@ -14,6 +14,7 @@ namespace WebApi.Controller;
 [ApiController]
 [Route("api/[controller]")]
 [EnableRateLimiting("AssetOperations")]
+[Authorize(Roles = "Admin")]
 public class AssetNetworkInfoController : ControllerBase
 {
     private readonly IMediator  _mediator;

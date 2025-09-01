@@ -53,4 +53,18 @@ public class AssetRepository  : IAssetRepository
             .Include(a => a.Cabinet)
             .Where(a => a.Id == id).FirstOrDefaultAsync(cancellationToken);
     }
+
+    public async Task<List<Asset>> GetAssetsByUserId(string userId, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Assets
+            .AsNoTracking()
+            .AsSplitQuery()
+            .Include(a => a.Location)
+            .Include(a => a.Department)
+            .Include(a => a.AssignedToUser)
+            .Include(a => a.AssetType)
+            .Include(a => a.Cabinet)
+            .Where(a => a.AssignedToUserId == userId)
+            .ToListAsync(cancellationToken);
+    }
 }
