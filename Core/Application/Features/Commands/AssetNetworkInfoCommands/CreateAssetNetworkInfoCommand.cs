@@ -1,5 +1,5 @@
-using Application.Enums;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Commands.AssetNetworkInfoCommands;

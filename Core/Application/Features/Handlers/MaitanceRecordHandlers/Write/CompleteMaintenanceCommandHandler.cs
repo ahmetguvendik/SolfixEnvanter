@@ -2,6 +2,7 @@ using Application.Features.Commands.MaintenanceRecordCommands;
 using Application.Interfaces;
 using Domain.Entites;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 

@@ -34,7 +34,8 @@ public static class ServiceRegistration
         collection.AddScoped(typeof(ISslCertificateRepository), typeof(SslCertificateRepository));    
         collection.AddScoped(typeof(ICabinetRepository), typeof(CabinetRepository));    
         collection.AddScoped(typeof(IAssetNetworkInfoRepository), typeof(AssetNetworkInfoRepository));    
-        collection.AddScoped(typeof(IMaintenanceRecordRepository), typeof(MaintenanceRecordRepository));    
+        collection.AddScoped(typeof(IMaintenanceRecordRepository), typeof(MaintenanceRecordRepository));
+        collection.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));    
 
         
         //Services

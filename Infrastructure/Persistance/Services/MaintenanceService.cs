@@ -1,6 +1,7 @@
 using Domain.Entities;
 using Application.Interfaces;
 using Domain.Entites;
+using Domain.Enums;
 
 namespace Persistence.Services
 {

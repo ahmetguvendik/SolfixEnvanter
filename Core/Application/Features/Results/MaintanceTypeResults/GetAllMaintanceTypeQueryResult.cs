@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Application.Features.Results.MaintenanceTypeResults;
 
 public class GetAllMaintenanceTypeQueryResult

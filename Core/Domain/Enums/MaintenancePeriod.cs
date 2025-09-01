@@ -1,3 +1,5 @@
+namespace Domain.Enums;
+
 public enum MaintenancePeriod
 {
     Daily,

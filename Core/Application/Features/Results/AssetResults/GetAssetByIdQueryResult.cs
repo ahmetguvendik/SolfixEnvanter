@@ -1,5 +1,5 @@
-using Application.Enums;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Features.Results.AssetResults;
 
