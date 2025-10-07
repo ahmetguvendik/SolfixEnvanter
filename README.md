@@ -1,4 +1,4 @@
-## Solfix Envanter Takip Sistemi
+## IT Envanter Takip Sistemi
 
 Kurumsal varlık/envanter takibi için geliştirilen, katmanlı mimariye sahip .NET 9 Web API projesi. JWT ile kimlik doğrulama, rol tabanlı yetkilendirme, MediatR ile CQRS, FluentValidation, Serilog ile MSSQL loglama ve hız sınırlama (rate limiting) içerir.
 
@@ -57,19 +57,11 @@ cd Presentation/WebApi
  dotnet user-secrets init
 
 # Bağlantı cümlesi
- dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Database=SolfixEnvanterDb;User Id=sa;Password=<SIFRE>;Encrypt=True;TrustServerCertificate=True;"
-
-# JWT ayarları
- dotnet user-secrets set "Jwt:Key" "<en az 32 baytlık gizli anahtar>"
- dotnet user-secrets set "Jwt:Issuer" "SolfixEnvanterTakipSistemi"
- dotnet user-secrets set "Jwt:Audience" "SolfixEnvanterTakipSistemiKullanicilari"
+ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Database=Db_Name;User Id=sa;Password=<SIFRE>;Encrypt=True;TrustServerCertificate=True;"
 ```
 Alternatif: ortam değişkenleri
 ```bash
 export ConnectionStrings__DefaultConnection="..."
-export Jwt__Key="..."
-export Jwt__Issuer="SolfixEnvanterTakipSistemi"
-export Jwt__Audience="SolfixEnvanterTakipSistemiKullanicilari"
 ```
 
 2) **Veritabanını hazırla** (migrasyonları uygula):
@@ -89,7 +81,6 @@ export Jwt__Audience="SolfixEnvanterTakipSistemiKullanicilari"
 
 ### Konfigürasyon
 - `ConnectionStrings:DefaultConnection`: SQL Server bağlantı cümlesi.
-- `Jwt:Key/Issuer/Audience/ExpireMinutes`: JWT doğrulama parametreleri.
 - `RateLimiting`:
   - `General`, `Authentication`, `AssetOperations` için `PermitLimit`, `Window`, `QueueLimit`.
 - `Serilog`:
@@ -128,7 +119,6 @@ export Jwt__Audience="SolfixEnvanterTakipSistemiKullanicilari"
 
 ### Sorun Giderme
 - SQL bağlantı hatası: Sunucu/port, kullanıcı/parola ve `TrustServerCertificate=True` (geliştirme) ayarlarını kontrol edin.
-- JWT key uzunluğu: En az 32 bayt (HMAC-SHA256 için önerilir).
 - Swagger görünmüyor: Sadece Development ortamında aktiftir.
 
 
